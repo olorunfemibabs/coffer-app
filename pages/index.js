@@ -5,6 +5,8 @@ export default function Home() {
     <main className=" flex justify-between">
       <h1>Coffer</h1>
       <ConnectButton />
+
+      <p>Still in progress...</p>
     </main>
   );
 }
