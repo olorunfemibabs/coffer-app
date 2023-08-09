@@ -24,7 +24,7 @@ export default function Sidebar() {
       
       <div className="h-full min-h-screen bg-[#5060E9] rounded-r-[60px] pl-[80px] pt-[100px]">
         
-<div className="flex flex-col gap-3 text-[#C5CBFD] ">
+<div className="flex flex-col gap-3 text-[#C5CBFD] font-normal text-[16px] side">
 
       {menu.map((item, index)=>{
         const isActive = pathname.startsWith(item.href);
@@ -33,7 +33,7 @@ export default function Sidebar() {
 href={item.href}
 key={index}
 className={
-  isActive &&"text-[#0E1A87] border-l-[2px] border-[#0E1A87] "
+  isActive &&"text-[#0E1A87] border-l-[2px] pl-2 border-[#0E1A87] font-bold "
 }
 
 >
