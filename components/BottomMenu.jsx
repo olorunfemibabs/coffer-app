@@ -1,5 +1,5 @@
 import {RiHome7Fill} from 'react-icons/ri';
-import {FiSearch} from 'react-icons/Fi';
+import {FiSearch} from 'react-icons/fi';
 
 export default function BottomMenu() {
     const menu=[
