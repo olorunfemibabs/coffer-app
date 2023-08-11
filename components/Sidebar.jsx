@@ -12,7 +12,7 @@ export default function Sidebar() {
     },
     {
       name:"Files",
-      href:"/dashboard/files"
+      href:"/dashboard/file"
 
     },
     {
