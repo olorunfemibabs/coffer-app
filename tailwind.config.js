@@ -17,8 +17,8 @@ module.exports = {
         lgDesktop: { max: "1280px" }, //large desktop
         smDesktop: { max: "1024px" }, // small desktop
         smDesk: { max: "917px" }, // small desktop
-        tabletAir: { max: "820px" }, // big tablet
-        tablet: { max: "768px" },
+        tabletAir: { max: "824px" }, // big tablet
+        tablet: { max: "770px" },
         surfDuo:{max:"540"},
         mobile: { max: "480px" },
         smMobile: { max: "320px" },

@@ -2,6 +2,7 @@ import React from 'react'
 import Topbar from './Topbar'
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
+import Image from 'next/image';
 export default function Sidebar() {
   const pathname = usePathname();
   const menu =[
@@ -20,9 +21,9 @@ export default function Sidebar() {
     }
   ]
   return (
-    <main className='bg-[#F5F6FF] min-h-screen'>
+    <main className='bg-[#F5F6FF] tablet:hidden'>
       
-      <div className="h-full min-h-screen bg-[#5060E9] rounded-r-[60px] pl-[80px] pt-[100px]">
+      <div className="h-full min-h-screen max-h-screen overflow-y-hidden smDesk:h-screen bg-[#5060E9] rounded-tr-[60px] pl-[80px] pt-[100px] ">
         
 <div className="flex flex-col gap-3 text-[#C5CBFD] font-normal text-[16px] side">
 
@@ -44,6 +45,15 @@ className={
 
         )
       }
+</div>
+<div className="mt-[250px] smDesktop:mt-[100px] smDesk:mt-[600px] tabletAir:mt-[500px]">
+
+<div className="flex w-[140px] -ml-[10px] pl-[20px] font-normal py-[8px]     border-[1px] rounded-xl text-[16px] text-[#0E1A87] gap-2 bg-[#F5F6FF]">
+  <h5 className="">
+  Upgrade
+  </h5>
+  <Image src='/../images/scaling.svg'  alt='upgrade' width={20} height={20}/>
+</div>
 </div>
       </div>
       </main>
