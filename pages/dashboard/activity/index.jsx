@@ -1,7 +1,11 @@
-import React from 'react'
+import Layout from '@/components/Layout'
+import ActivityFeatures from '@/features/Activity/ActivityFeatures'
+
 
 export default function Activity() {
   return (
-    <div>Activity</div>
+    <Layout>
+      <ActivityFeatures/>
+    </Layout>
   )
 }

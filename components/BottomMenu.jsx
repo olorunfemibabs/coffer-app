@@ -1,7 +1,5 @@
 /** @format */
 
-import { RiHome7Fill } from "react-icons/ri";
-import { FiSearch } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
