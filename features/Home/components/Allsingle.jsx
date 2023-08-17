@@ -15,7 +15,7 @@ export default function Allsingle({close}) {
                   <img src="/../Icon/like.svg" alt="" className="w-[32px] h-[32px] mobile:w-[28px] mobile:h-[28px]" />
               </div>
           </div>
-          <div className="w-[100%] px-auto">
+          <div className="w-[100%] mx-auto">
               <img src="/../images/Rectangle.png" alt="" className="w-[45%] lgDesktop:w-[48%] smDesk:w-[600px] tabletAir:w-[500px] mx-auto tabletAir:mt-[60px] mobile:mt-[120px] "/>
           </div>
           </section>

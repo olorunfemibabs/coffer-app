@@ -10,7 +10,7 @@ export default function Allphotos() {
     <main className="w-[90%] flex flex-col mx-auto  mt-2 ">
 
         
-        <section className="mt-4 flex flex-wrap gap-4 ">
+        <section className="mt-6 flex flex-wrap gap-4 ">
         <Onephoto openTab={()=>setOpen(true)}/>
         <Onephoto openTab={()=>setOpen(true)}/>
         <Onephoto openTab={()=>setOpen(true)}/>

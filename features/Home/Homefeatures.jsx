@@ -18,7 +18,7 @@ export default function Homefeatures() {
         </div>
       </div>
 
-      <div className=''>
+      <div className='ml-[10px]'>
       <Allphotos />
       </div>
       
