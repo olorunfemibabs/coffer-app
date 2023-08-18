@@ -6,15 +6,11 @@ export default function Onephoto({openTab}) {
   return (
     <section>
 
-    <div className="w-[248px] h-[228px] pt-[30px] pl-[20px] rounded-[36px] border-[1px] shadow-md">
-        <img src="/../images/Rectangle.png" alt="" className="w-[209px] h-[165px] smDesk:w-[176px] smDesk:h-[160px] tabletAir:w-[230px] tabletAir:h-[200px] surfDuo:w-[120px] surfDuo:h[100px] mobile:w-[90px] mobile:h-[70px] object-cover rounded-[8px]" onClick={openTab}/>
+    <div className="w-[220px] h-[200px] lgDesktop:w-[180px] lgDesktop:h-[160px] smDesktop:w-[170px] smDesktop:h-[146px] smDesk:w-[140px] smDesk:h-[116px] tabletAir:w-[170px] tabletAir:h-[150px] tablet:w-[158px] tablet:h-[140px] mobile:w-[103.4px] mobile:h-[90px] rounded-[36px] lgDesktop:rounded-[28px] mobile:rounded-[16px] border-[1px] shadow-md bg-white ">
+        <img src="/../images/Rectangle.png" alt="" className="w-[86%] h-[78%]  object-cover my-[20px] lgDesktop:mt-[18px] smDesk:mt-[13px] tabletAir:mt-[16px] mobile:mt-[9px] mx-auto rounded-lg " onClick={openTab}/>
        
     </div>
-
-    {/* {open &&
-        <MainSinglePhoto close={()=>setOpen(false)} />
-    }
-     */}
+    
     </section>
   )
 }
