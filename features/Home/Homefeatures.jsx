@@ -1,16 +1,17 @@
 import React from 'react';
 import Allphotos from "./components/Allphotos";
+import NoPhoto from "./components/NoPhoto";
 
 export default function Homefeatures() {
   return (
     <main className="items-center side">
       
 
-      <h4 className="text-[32px] tracking-[0.25%] text-justify font-normal leading-30 gap-10 pl-[70px] pt-[10px] side tablet:text-[28px] mobile:text-[20px] mobile:pl-[20px]">My Photos</h4>
+      {/*<h4 className="text-[32px] tracking-[0.25%] text-justify font-normal leading-30 gap-10 pl-[70px] pt-[10px] side tablet:text-[28px] mobile:text-[20px] mobile:pl-[20px]">My Photos</h4>
     
       
 
-      <div className='flex flex-wrap gap-4 w-[93%] smDesktop:w-[90%] mx-auto font-medium text-[17px] tabletAir:text-[14px] leading-7 tracking-[0.5%] text-justify font-Space-Grotesk border-[#C5CBFD] border-[1px] rounded-[8px]  mt-[20px] py-[16px] ml-[34px] mobile:hidden'>
+       <div className='flex flex-wrap gap-4 w-[93%] smDesktop:w-[90%] mx-auto font-medium text-[17px] tabletAir:text-[14px] leading-7 tracking-[0.5%] text-justify font-Space-Grotesk border-[#C5CBFD] border-[1px] rounded-[8px]  mt-[20px] py-[16px] ml-[34px] mobile:hidden'>
         <div className='w-[95%] mx-auto flex gap-6 '>
         <h3 className=''>547 Photo Uploaded</h3>
         <h3>9353 Photo Space left</h3>
@@ -37,7 +38,9 @@ export default function Homefeatures() {
         </div>
       <div className='ml-[10px] mobile:ml-[20px] '>
       <Allphotos />
-      </div>
+      </div> */}
+
+      <NoPhoto />
       
     </main>
   )
