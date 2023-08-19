@@ -13,7 +13,7 @@ const FeatureCard = ({ img, title, content }) => (
         <h4 className="side font-normal text-[#010101] text-[24px] leading-[28px]">
           {title}
         </h4>
-        <p className=" font-normal text-[15px] text-[#010101] leading-[22.5px] my-4">
+        <p className="font-normal grotesk text-[15px] text-[#010101] leading-[22.5px] my-4">
           {content}
         </p>
       </div>

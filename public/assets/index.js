@@ -12,6 +12,7 @@ import kristin from "./kristin.png";
 import Metamask_logo from "./Metamask_logo.png";
 import miles from "./miles.png";
 import safe_security_shield from "./safe_security_shield.png";
+import charm_tick_double from "./charm_tick_double.svg";
 import shelf_design from "./shelf_design.png";
 import COFFER from "./COFFER.png";
 import Star_1 from "./Star_1.png";
@@ -33,6 +34,7 @@ export {
   miles,
   safe_security_shield,
   shelf_design,
+  charm_tick_double,
   COFFER,
   Star_1,
   Ellipse_1,

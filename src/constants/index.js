@@ -74,6 +74,30 @@ export const features = [
       "We understand that your photo memories are personal and sensitive. With advanced encryption protocols and private keys, our Dapp ensures that only you can access your photos. Say goodbye to privacy concerns and enjoy the peace that comes with knowing your memories are safe.",
   },
 ];
+export const prices = [
+  {
+    id: "Basic",
+    price: "Free",
+    text: "Discover Coffer",
+    content: "Key Features",
+    volume: 10000
+  },
+  {
+    id: "Premium",
+    price: "20USDT",
+    text: "The best option for individual creator",
+    content: "Everything in Professional, plus",
+    volume: 50000
+  },
+  {
+    id: "Professional",
+    price: "18USDT",
+    text: "Built for memories and experience",
+    content: "Everything in basic, plus",
+    volume: 30000
+  },
+
+];
 
 export const feedback = [
   {
