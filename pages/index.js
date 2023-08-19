@@ -14,11 +14,14 @@ import { useEffect, useState } from "react";
 import { Web3Auth } from "@web3auth/web3auth";
 import { CHAIN_NAMESPACES } from "@web3auth/base";
 import RPC from "@/web3RPC";
+import { useDispatch } from "react-redux";
+import { init, login } from "@/Redux/features/walletConnect";
 
 const clientId =
   "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
 
 export default function Home() {
+  const dispatch = useDispatch()
   const [web3auth, setWeb3auth] = useState(null);
   const [provider, setProvider] = useState(null);
   const [address, setAddress] = useState("");
@@ -45,120 +48,123 @@ export default function Home() {
     },
   };
 
-  useEffect(() => {
-    const init = async () => {
-      try {
-        const web3auth = new Web3Auth({
-          clientId,
-          chainConfig: {
-            chainNamespace: CHAIN_NAMESPACES.EIP155,
-            chainId: "0x1",
-            rpcTarget: "https://rpc.ankr.com/eth",
-          },
-        });
+  // useEffect(() => {
+  //   // const init = async () => {
+  //   //   try {
+  //   //     const web3auth = new Web3Auth({
+  //   //       clientId,
+  //   //       chainConfig: {
+  //   //         chainNamespace: CHAIN_NAMESPACES.EIP155,
+  //   //         chainId: "0x1",
+  //   //         rpcTarget: "https://rpc.ankr.com/eth",
+  //   //       },
+  //   //     });
 
-        setWeb3auth(web3auth);
-        await web3auth.initModal();
-        setProvider(web3auth.provider);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  //   //     setWeb3auth(web3auth);
+  //   //     await web3auth.initModal();
+  //   //     setProvider(web3auth.provider);
+  //   //   } catch (error) {
+  //   //     console.error(error);
+  //   //   }
+  //   // };
 
-    init();
-  }, []);
+  //   // init();
+  //   dispatch(init())
 
-  const login = async () => {
-    if (!web3auth) {
-      console.log("web3auth not initialized yet");
-      return;
-    }
-    const web3authProvider = await web3auth.connect();
-    setProvider(web3authProvider);
-  };
-  const logout = async () => {
-    if (!web3auth) {
-      console.log("web3auth not initialized yet");
-      return;
-    }
-    const web3authProvider = await web3auth.logout();
-    setProvider(web3authProvider);
-    setBalance("");
-    setAddress("");
-    setUserData({});
-    setChainId("");
-  };
+  // }, [init]);
 
-  const getUserInfo = async () => {
-    if (!web3auth) {
-      console.log("web3auth not initialized yet");
-      return;
-    }
-    const user = await web3auth.getUserInfo();
-    setUserData(user);
-    console.log(user);
-  };
+  
+  // const login = async () => {
+  //   if (!web3auth) {
+  //     console.log("web3auth not initialized yet");
+  //     return;
+  //   }
+  //   const web3authProvider = await web3auth.connect();
+  //   setProvider(web3authProvider);
+  // };
+  // const logout = async () => {
+  //   if (!web3auth) {
+  //     console.log("web3auth not initialized yet");
+  //     return;
+  //   }
+  //   const web3authProvider = await web3auth.logout();
+  //   setProvider(web3authProvider);
+  //   setBalance("");
+  //   setAddress("");
+  //   setUserData({});
+  //   setChainId("");
+  // };
 
-  const getChainId = async () => {
-    if (!provider) {
-      console.log("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const chainId = await rpc.getChainId();
-    console.log(chainId);
-    setChainId(chainId);
-  };
-  const getAccounts = async () => {
-    if (!provider) {
-      console.log("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const address = await rpc.getAccounts();
-    setAddress(address);
-    console.log(address);
-  };
+  // const getUserInfo = async () => {
+  //   if (!web3auth) {
+  //     console.log("web3auth not initialized yet");
+  //     return;
+  //   }
+  //   const user = await web3auth.getUserInfo();
+  //   setUserData(user);
+  //   console.log(user);
+  // };
 
-  const getBalance = async () => {
-    if (!provider) {
-      console.log("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const balance = await rpc.getBalance();
-    setBalance(balance);
-    console.log(balance);
-  };
+  // const getChainId = async () => {
+  //   if (!provider) {
+  //     console.log("provider not initialized yet");
+  //     return;
+  //   }
+  //   const rpc = new RPC(provider);
+  //   const chainId = await rpc.getChainId();
+  //   console.log(chainId);
+  //   setChainId(chainId);
+  // };
+  // const getAccounts = async () => {
+  //   if (!provider) {
+  //     console.log("provider not initialized yet");
+  //     return;
+  //   }
+  //   const rpc = new RPC(provider);
+  //   const address = await rpc.getAccounts();
+  //   setAddress(address);
+  //   console.log(address);
+  // };
 
-  const sendTransaction = async () => {
-    if (!provider) {
-      console.log("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const receipt = await rpc.sendTransaction();
-    console.log(receipt);
-  };
-  const sendContractTransaction = async () => {
-    if (!provider) {
-      console.log("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const receipt = await rpc.sendContractTransaction();
-    console.log(receipt);
-  };
+  // const getBalance = async () => {
+  //   if (!provider) {
+  //     console.log("provider not initialized yet");
+  //     return;
+  //   }
+  //   const rpc = new RPC(provider);
+  //   const balance = await rpc.getBalance();
+  //   setBalance(balance);
+  //   console.log(balance);
+  // };
 
-  const getPrivateKey = async () => {
-    if (!provider) {
-      console.log("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const privateKey = await rpc.getPrivateKey();
-    console.log(privateKey);
-  };
+  // const sendTransaction = async () => {
+  //   if (!provider) {
+  //     console.log("provider not initialized yet");
+  //     return;
+  //   }
+  //   const rpc = new RPC(provider);
+  //   const receipt = await rpc.sendTransaction();
+  //   console.log(receipt);
+  // };
+  // const sendContractTransaction = async () => {
+  //   if (!provider) {
+  //     console.log("provider not initialized yet");
+  //     return;
+  //   }
+  //   const rpc = new RPC(provider);
+  //   const receipt = await rpc.sendContractTransaction();
+  //   console.log(receipt);
+  // };
+
+  // const getPrivateKey = async () => {
+  //   if (!provider) {
+  //     console.log("provider not initialized yet");
+  //     return;
+  //   }
+  //   const rpc = new RPC(provider);
+  //   const privateKey = await rpc.getPrivateKey();
+  //   console.log(privateKey);
+  // };
 
   const loggedInView = (
     <>
@@ -199,7 +205,7 @@ export default function Home() {
   );
 
   const unloggedInView = (
-    <button onClick={login} className="card" style={styles.button}>
+    <button onClick={()=>dispatch(login())} className="card" style={styles.button}>
       Login
     </button>
   );
