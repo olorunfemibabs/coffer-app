@@ -27,13 +27,13 @@ export default function Home() {
         <Clients />
       </div>
 
-      <div className="bg-[#F5F6FF] sm:px-16 px-6 py-6 flex justify-center items-start">
-        <div className="xl:max-w-[1280px] w-full">
+      <div className="bg-[#F5F6FF] md:px-16 px-6 py-6 flex justify-center items-start">
+        <div className="w-full">
           <Business />
         </div>
       </div>
 
-      <div className=" bg-[#0e1a87] flex justify-center items-start w-screen">
+      <div className="bg-objective-pattern bg-no-repeat bg-cover sm:bg-none sm:bg-[#0e1a87] flex justify-center items-start">
         <Objective />
       </div>
 

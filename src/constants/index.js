@@ -54,14 +54,14 @@ export const clients = [
 export const features = [
   {
     id: "feature-1",
-    img: database,
+    img: cloud_storage,
     title: "Decentralized Storage",
     content:
       "Unlike traditional storage services that rely on centralized servers, our Dapp utilizes blockchain technology to store your photos across multiple nodes. This eliminates the risk of your precious memories being lost or compromised due to server failures or cyber-attacks.",
   },
   {
     id: "feature-2",
-    img: cloud_storage,
+    img: database,
     title: "Streamlined Organization",
     content:
       "Tired of spending hours searching for a specific photo? Our Photo Storage Dapp features intelligent organization and search capabilities, making searching for a particular memory hassle-free.",

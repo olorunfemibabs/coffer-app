@@ -1,16 +1,14 @@
 import Image from "next/image";
 
 const FeatureCard = ({ img, title, content }) => (
-  <div className="border border-[#C5CBFD] flex flex-col justify-center items-start py-[23px] px-[26px] rounded-3xl max-w-[516px] max-h-[412px] md:mr-10 sm:mr-5 mr-0 my-5 bg-[#f5f6ff]">
+  <div className="border border-[#C5CBFD] sm:w-[400px] w-full flex flex-col justify-start sm:justify-center items-start sm:py-[23px] py-10 px-[26px] rounded-3xl  sm:max-h-fit bg-[#f5f6ff]">
     <Image
       src={img}
       alt="content_image"
-      width={190}
-      height={190}
-      className="object-contain"
+      className="object-contain sm:h-[200px] h-[60px] w-[60px] sm:w-[200px] mx-auto sm:mx-0"
     />
 
-    <div>
+    <div className="sm:mt-10 mt-0">
       <div className="flex flex-col">
         <h4 className="side font-normal text-[#010101] text-[24px] leading-[28px]">
           {title}
