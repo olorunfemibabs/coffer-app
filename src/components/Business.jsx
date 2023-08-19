@@ -19,7 +19,7 @@ const Business = () => (
       </div>
     </div>
 
-    <div className="flex md:flex-row flex-nowrap sm:justify-start justify-center w-full">
+    <div className="flex flex-col md:flex-row flex-nowrap sm:justify-start justify-center w-full">
       {features?.map((card) => (
         <FeatureCard key={card.id} {...card} />
       ))}
