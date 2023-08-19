@@ -16,18 +16,20 @@ import { CHAIN_NAMESPACES } from "@web3auth/base";
 import RPC from "@/web3RPC";
 import { useDispatch } from "react-redux";
 import { init, login } from "@/Redux/features/walletConnect";
+import { useAppContext } from "@/hooks/AppContext";
 
-const clientId =
-  "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
+// const clientId =
+//   "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
 
 export default function Home() {
-  const dispatch = useDispatch()
-  const [web3auth, setWeb3auth] = useState(null);
-  const [provider, setProvider] = useState(null);
-  const [address, setAddress] = useState("");
-  const [balance, setBalance] = useState("");
-  const [chainId, setChainId] = useState("");
-  const [userData, setUserData] = useState({});
+  const app = useAppContext();
+  // const dispatch = useDispatch()
+  // const [web3auth, setWeb3auth] = useState(null);
+  // const [provider, setProvider] = useState(null);
+  // const [address, setAddress] = useState("");
+  // const [balance, setBalance] = useState("");
+  // const [chainId, setChainId] = useState("");
+  // const [userData, setUserData] = useState({});
 
   let styles = {
     button: {
@@ -168,33 +170,33 @@ export default function Home() {
 
   const loggedInView = (
     <>
-      <button onClick={getUserInfo} className="card" style={styles.button}>
+      <button onClick={app.getUserInfo} className="card" style={styles.button}>
         Get User Info
       </button>
-      <button onClick={getChainId} className="card" style={styles.button}>
+      <button onClick={app.getChainId} className="card" style={styles.button}>
         Get Chain ID
       </button>
-      <button onClick={getAccounts} className="card" style={styles.button}>
+      <button onClick={app.getAccounts} className="card" style={styles.button}>
         Get Accounts
       </button>
-      <button onClick={getBalance} className="card" style={styles.button}>
+      <button onClick={app.getBalance} className="card" style={styles.button}>
         Get Balance
       </button>
-      <button onClick={sendTransaction} className="card" style={styles.button}>
+      <button onClick={app.sendTransaction} className="card" style={styles.button}>
         Send Transaction
       </button>
       <button
-        onClick={sendContractTransaction}
+        onClick={app.sendContractTransaction}
         className="card"
         style={styles.button}
       >
         Send Approve Transaction
       </button>
 
-      <button onClick={getPrivateKey} className="card" style={styles.button}>
+      <button onClick={app.getPrivateKey} className="card" style={styles.button}>
         Get Private Key
       </button>
-      <button onClick={logout} className="card" style={styles.button}>
+      <button onClick={app.logout} className="card" style={styles.button}>
         Logout
       </button>
 
@@ -205,7 +207,7 @@ export default function Home() {
   );
 
   const unloggedInView = (
-    <button onClick={()=>dispatch(login())} className="card" style={styles.button}>
+    <button onClick={app.login} className="card" style={styles.button}>
       Login
     </button>
   );
@@ -263,22 +265,22 @@ export default function Home() {
           <div className="col-md-3">
             {" "}
             <div className="grid">
-              {provider ? loggedInView : unloggedInView}
+              {app.provider ? loggedInView : unloggedInView}
             </div>
           </div>
           <div className="col-md-9">
             <div style={{ marginTop: 20, textAlign: "left" }}>
-              address: {address}
+              address: {app.address}
               <br />
               <br />
-              chainId: {chainId}
+              chainId: {app.chainId}
               <br />
               <br />
-              balance: {balance}
+              balance: {app.balance}
               <br />
               <br />
               user:{" "}
-              <span style={{ fontSize: 12 }}>{JSON.stringify(userData)}</span>
+              <span style={{ fontSize: 12 }}>{JSON.stringify(app.userData)}</span>
             </div>
           </div>
         </div>

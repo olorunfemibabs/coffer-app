@@ -1,4 +1,4 @@
-import {createContext, useContext, useEffect} from "react"
+import {createContext, useContext, useEffect, useState} from "react"
 import { Web3Auth } from "@web3auth/web3auth";
 import { CHAIN_NAMESPACES } from "@web3auth/base";
 import RPC from "@/web3RPC";
@@ -7,6 +7,8 @@ const AppContext = createContext();
 
 
 export function AppWrapper({children}){
+  const clientId =
+  "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
 
     const [web3auth, setWeb3auth] = useState(null);
     const [provider, setProvider] = useState(null);
@@ -15,7 +17,30 @@ export function AppWrapper({children}){
     const [chainId, setChainId] = useState("");
     const [userData, setUserData] = useState({});
 
-
+    useEffect(() => {
+      const init = async () => {
+        try {
+          const web3auth = new Web3Auth({
+            clientId,
+            chainConfig: {
+              chainNamespace: CHAIN_NAMESPACES.EIP155,
+              chainId: "0x1",
+              rpcTarget: "https://rpc.ankr.com/eth",
+            },
+          });
+  
+          setWeb3auth(web3auth);
+          await web3auth.initModal();
+          setProvider(web3auth.provider);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+  
+      init();
+  
+  
+    }, []);
     const logout = async () => {
         if (!web3auth) {
           console.log("web3auth not initialized yet");
@@ -118,30 +143,7 @@ export function AppWrapper({children}){
 
     }
 
-    useEffect(() => {
-        const init = async () => {
-          try {
-            const web3auth = new Web3Auth({
-              clientId,
-              chainConfig: {
-                chainNamespace: CHAIN_NAMESPACES.EIP155,
-                chainId: "0x1",
-                rpcTarget: "https://rpc.ankr.com/eth",
-              },
-            });
-    
-            setWeb3auth(web3auth);
-            await web3auth.initModal();
-            setProvider(web3auth.provider);
-          } catch (error) {
-            console.error(error);
-          }
-        };
-    
-        init();
-    
-    
-      }, []);
+
 
     return(
         <AppContext.Provider value={shared}>
