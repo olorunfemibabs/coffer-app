@@ -7,7 +7,6 @@ import Hero from "@/src/components/Hero";
 import Navbar from "@/src/components/Navbar";
 import Objective from "@/src/components/Objective";
 import Testimonials from "@/src/components/Testimonials";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function Home() {
   return (
