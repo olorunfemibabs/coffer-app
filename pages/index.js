@@ -18,18 +18,19 @@ import { useDispatch } from "react-redux";
 import { init, login } from "@/Redux/features/walletConnect";
 import { useAppContext } from "@/hooks/AppContext";
 
-// const clientId =
-//   "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
+const clientId =
+  "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
 
 export default function Home() {
-  const app = useAppContext();
-  // const dispatch = useDispatch()
-  // const [web3auth, setWeb3auth] = useState(null);
-  // const [provider, setProvider] = useState(null);
-  // const [address, setAddress] = useState("");
-  // const [balance, setBalance] = useState("");
-  // const [chainId, setChainId] = useState("");
-  // const [userData, setUserData] = useState({});
+
+  const app = useAppContext()
+
+  const [web3auth, setWeb3auth] = useState(null);
+  const [provider, setProvider] = useState(null);
+  const [address, setAddress] = useState("");
+  const [balance, setBalance] = useState("");
+  const [chainId, setChainId] = useState("");
+  const [userData, setUserData] = useState({});
 
   let styles = {
     button: {
@@ -50,153 +51,159 @@ export default function Home() {
     },
   };
 
-  // useEffect(() => {
-  //   // const init = async () => {
-  //   //   try {
-  //   //     const web3auth = new Web3Auth({
-  //   //       clientId,
-  //   //       chainConfig: {
-  //   //         chainNamespace: CHAIN_NAMESPACES.EIP155,
-  //   //         chainId: "0x1",
-  //   //         rpcTarget: "https://rpc.ankr.com/eth",
-  //   //       },
-  //   //     });
+  useEffect(() => {
+    const init = async () => {
+      try {
+        const web3auth = new Web3Auth({
+          clientId,
+          chainConfig: {
+            chainNamespace: CHAIN_NAMESPACES.EIP155,
+            chainId: "0x1",
+            rpcTarget: "https://rpc.ankr.com/eth",
+          },
+        });
 
-  //   //     setWeb3auth(web3auth);
-  //   //     await web3auth.initModal();
-  //   //     setProvider(web3auth.provider);
-  //   //   } catch (error) {
-  //   //     console.error(error);
-  //   //   }
-  //   // };
+       
+        setWeb3auth(web3auth);
+        await web3auth.initModal();
+        setProvider(web3auth.provider);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  //   // init();
-  //   dispatch(init())
+    init();
+    // dispatch(init())
 
-  // }, [init]);
+  }, []);
 
+  console.log("auth",web3auth)
+
+  console.log("provider",provider)
   
-  // const login = async () => {
-  //   if (!web3auth) {
-  //     console.log("web3auth not initialized yet");
-  //     return;
-  //   }
-  //   const web3authProvider = await web3auth.connect();
-  //   setProvider(web3authProvider);
-  // };
-  // const logout = async () => {
-  //   if (!web3auth) {
-  //     console.log("web3auth not initialized yet");
-  //     return;
-  //   }
-  //   const web3authProvider = await web3auth.logout();
-  //   setProvider(web3authProvider);
-  //   setBalance("");
-  //   setAddress("");
-  //   setUserData({});
-  //   setChainId("");
-  // };
+  const login = async () => {
+    if (!web3auth) {
+      console.log("web3auth not initialized yet");
+      return;
+    }
+    const web3authProvider = await web3auth.connect();
+    setProvider(web3authProvider);
+  };
+  const logout = async () => {
+    if (!web3auth) {
+      console.log("web3auth not initialized yet");
+      return;
+    }
+    const web3authProvider = await web3auth.logout();
+    setProvider(web3authProvider);
+    setBalance("");
+    setAddress("");
+    setUserData({});
+    setChainId("");
+  };
 
-  // const getUserInfo = async () => {
-  //   if (!web3auth) {
-  //     console.log("web3auth not initialized yet");
-  //     return;
-  //   }
-  //   const user = await web3auth.getUserInfo();
-  //   setUserData(user);
-  //   console.log(user);
-  // };
+  const getUserInfo = async () => {
+    if (!web3auth) {
+      console.log("web3auth not initialized yet");
+      return;
+    }
+    const user = await web3auth.getUserInfo();
+    setUserData(user);
+    localStorage.setItem("USER_IMAGE", user.ProfileImage)
+    console.log(user);
+    // console.log("provider",provider);
+  };
 
-  // const getChainId = async () => {
-  //   if (!provider) {
-  //     console.log("provider not initialized yet");
-  //     return;
-  //   }
-  //   const rpc = new RPC(provider);
-  //   const chainId = await rpc.getChainId();
-  //   console.log(chainId);
-  //   setChainId(chainId);
-  // };
-  // const getAccounts = async () => {
-  //   if (!provider) {
-  //     console.log("provider not initialized yet");
-  //     return;
-  //   }
-  //   const rpc = new RPC(provider);
-  //   const address = await rpc.getAccounts();
-  //   setAddress(address);
-  //   console.log(address);
-  // };
+  const getChainId = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      return;
+    }
+    const rpc = new RPC(provider);
+    const chainId = await rpc.getChainId();
+    console.log(chainId);
+    setChainId(chainId);
+  };
+  const getAccounts = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      return;
+    }
+    const rpc = new RPC(provider);
+    const address = await rpc.getAccounts();
+    setAddress(address);
+    console.log(address);
+  };
 
-  // const getBalance = async () => {
-  //   if (!provider) {
-  //     console.log("provider not initialized yet");
-  //     return;
-  //   }
-  //   const rpc = new RPC(provider);
-  //   const balance = await rpc.getBalance();
-  //   setBalance(balance);
-  //   console.log(balance);
-  // };
+  const getBalance = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      return;
+    }
+    const rpc = new RPC(provider);
+    const balance = await rpc.getBalance();
+    setBalance(balance);
+    console.log(balance);
+  };
 
-  // const sendTransaction = async () => {
-  //   if (!provider) {
-  //     console.log("provider not initialized yet");
-  //     return;
-  //   }
-  //   const rpc = new RPC(provider);
-  //   const receipt = await rpc.sendTransaction();
-  //   console.log(receipt);
-  // };
-  // const sendContractTransaction = async () => {
-  //   if (!provider) {
-  //     console.log("provider not initialized yet");
-  //     return;
-  //   }
-  //   const rpc = new RPC(provider);
-  //   const receipt = await rpc.sendContractTransaction();
-  //   console.log(receipt);
-  // };
+  const sendTransaction = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      return;
+    }
+    const rpc = new RPC(provider);
+    const receipt = await rpc.sendTransaction();
+    console.log(receipt);
+  };
+  const sendContractTransaction = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      return;
+    }
+    const rpc = new RPC(provider);
+    const receipt = await rpc.sendContractTransaction();
+    console.log(receipt);
+  };
 
-  // const getPrivateKey = async () => {
-  //   if (!provider) {
-  //     console.log("provider not initialized yet");
-  //     return;
-  //   }
-  //   const rpc = new RPC(provider);
-  //   const privateKey = await rpc.getPrivateKey();
-  //   console.log(privateKey);
-  // };
+  const getPrivateKey = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      return;
+    }
+    const rpc = new RPC(provider);
+    const privateKey = await rpc.getPrivateKey();
+    console.log(privateKey);
+  };
 
   const loggedInView = (
     <>
-      <button onClick={app.getUserInfo} className="card" style={styles.button}>
+      <button onClick={getUserInfo} className="card" style={styles.button}>
         Get User Info
       </button>
-      <button onClick={app.getChainId} className="card" style={styles.button}>
+      <button onClick={getChainId} className="card" style={styles.button}>
         Get Chain ID
       </button>
-      <button onClick={app.getAccounts} className="card" style={styles.button}>
+      <button onClick={getAccounts} className="card" style={styles.button}>
         Get Accounts
       </button>
-      <button onClick={app.getBalance} className="card" style={styles.button}>
+      <button onClick={getBalance} className="card" style={styles.button}>
         Get Balance
       </button>
-      <button onClick={app.sendTransaction} className="card" style={styles.button}>
+      <button onClick={sendTransaction} className="card" style={styles.button}>
         Send Transaction
       </button>
       <button
-        onClick={app.sendContractTransaction}
+        onClick={sendContractTransaction}
         className="card"
         style={styles.button}
       >
         Send Approve Transaction
       </button>
 
-      <button onClick={app.getPrivateKey} className="card" style={styles.button}>
+      <button onClick={getPrivateKey} className="card" style={styles.button}>
         Get Private Key
       </button>
-      <button onClick={app.logout} className="card" style={styles.button}>
+      <button onClick={logout} className="card" style={styles.button}>
         Logout
       </button>
 
@@ -207,7 +214,7 @@ export default function Home() {
   );
 
   const unloggedInView = (
-    <button onClick={app.login} className="card" style={styles.button}>
+    <button onClick={login} className="card" style={styles.button}>
       Login
     </button>
   );
@@ -265,22 +272,22 @@ export default function Home() {
           <div className="col-md-3">
             {" "}
             <div className="grid">
-              {app.provider ? loggedInView : unloggedInView}
+              {provider ? loggedInView : unloggedInView}
             </div>
           </div>
           <div className="col-md-9">
             <div style={{ marginTop: 20, textAlign: "left" }}>
-              address: {app.address}
+              address: {address}
               <br />
               <br />
-              chainId: {app.chainId}
+              chainId: {chainId}
               <br />
               <br />
-              balance: {app.balance}
+              balance: {balance}
               <br />
               <br />
               user:{" "}
-              <span style={{ fontSize: 12 }}>{JSON.stringify(app.userData)}</span>
+              <span style={{ fontSize: 12 }}>{JSON.stringify(userData)}</span>
             </div>
           </div>
         </div>

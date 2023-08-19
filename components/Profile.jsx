@@ -6,6 +6,7 @@ import ProfileDropDown from "./ProfileDropDown";
 
 export default function Profile() {
   const [open, setOpen] = useState(false);
+  c
   return (
     <div className="">
       <div className="w-[80px] h-[80px] cursor-pointer" onClick={()=>setOpen(!open)}>
