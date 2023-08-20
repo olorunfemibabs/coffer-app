@@ -1,8 +1,21 @@
 import { useState } from "react"
 import MainSinglePhoto from "./MainSinglePhoto";
+import url from "@/constants/ABI/url.json"
+import { ethers } from "ethers";
 
-export default function SinglePhoto({openTab}) {
-   
+export default  function SinglePhoto({openTab}) {
+  //  const provide = JSON.parse(localStorage.getItem("provider"))
+  // const signer = provide?.getSigner();
+  // const contractAddress = "0x396764f15ed1467883a9a5b7d42acfb788cd1826";
+  // // const provider = new ethers.providers.Web3Provider(web3authProvider);
+
+  // const contract = new ethers.Contract(contractAddress, url, signer);
+
+  // const message =  contract.name();
+
+  // console.log("name",message)
+
+  
   return (
     <section>
 

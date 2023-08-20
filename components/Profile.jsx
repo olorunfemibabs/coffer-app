@@ -3,22 +3,32 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ProfileDropDown from "./ProfileDropDown";
+import { useAccount } from "wagmi";
 
 export default function Profile() {
+  const{ address} = useAccount()
+ 
   const [open, setOpen] = useState(false);
-  c
-  return (
-    <div className="">
-      <div className="w-[80px] h-[80px] cursor-pointer" onClick={()=>setOpen(!open)}>
-        <Image
-          src="/../images/Rectangle.png"
-          alt="Picture of the author"
-          width={80}
-          height={80}
 
-          className="rounded-full cursor-pointer"
+  const handleclick=()=>{
+    setOpen(!open)
+  }
+  return (
+    <div className="" >
+      <div className="w-[80px] relative h-[80px] cursor-pointer" >
+        <img
+          src="/../Icon/av.png"
+          alt="Picture of the author"
+          
+          onClick={handleclick}
+          className="rounded-full w-[100%] h-[100%] cursor-pointer object-cover relative"
 
         />
+        <div className="flex absolute top-6 left-2 text-[gray] font-bold justify-center items-center z-1  ">
+
+        <p className="">{address?.substring(0, 2)}</p>...
+        <p className="">{address?.substring(29, 32)}</p>
+        </div>
       </div>
       <div className="">
 

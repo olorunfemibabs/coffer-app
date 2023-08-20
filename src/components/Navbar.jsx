@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { Web3Auth } from "@web3auth/web3auth";
 import { CHAIN_NAMESPACES } from "@web3auth/base";
 import RPC from "@/web3RPC";
+import Web3 from "web3";
 
 const clientId =
   "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
@@ -27,29 +28,60 @@ const Navbar = () => {
   const [chainId, setChainId] = useState("");
   const [userData, setUserData] = useState({});
 
+  // useEffect(() => {
+  //   const init = async () => {
+  //     try {
+  //       const web3auth = new Web3Auth({
+  //         clientId,
+  //         chainConfig: {
+  //           chainNamespace: CHAIN_NAMESPACES.EIP155,
+  //           chainId: "0x1",
+  //           rpcTarget: "https://rpc.ankr.com/eth",
+  //         },
+  //       });
+
+  //       setWeb3auth(web3auth);
+  //       await web3auth.initModal();
+  //       setProvider(web3auth.provider);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   init();
+
+    
+  // }, [provider]);
+
   useEffect(() => {
     const init = async () => {
       try {
         const web3auth = new Web3Auth({
-          clientId,
+          clientId, 
+          web3AuthNetwork: "testnet", // mainnet, aqua,  cyan or testnet
           chainConfig: {
             chainNamespace: CHAIN_NAMESPACES.EIP155,
-            chainId: "0x11155111",
-            rpcTarget: "https://rpc.ankr.com/eth",
+            chainId: "0x5", 
+            rpcTarget: "https://rpc.ankr.com/eth_goerli", // This is the public RPC we have added, please pass on your own endpoint while creating an app
           },
         });
 
-        setWeb3auth(web3auth);
+        await setWeb3auth(web3auth);
+
         await web3auth.initModal();
-        setProvider(web3auth.provider);
+
+        // if (web3auth.provider) {
+        //   setProvider(web3auth.provider);
+        // };
+        // const user = await web3auth.getUserInfo();
+        // setUserData(user);
+       
       } catch (error) {
         console.error(error);
       }
     };
 
     init();
-
-    window.localStorage.setItem("provider", JSON.stringify(provider));
   }, [provider]);
 
   const login = async () => {
@@ -58,7 +90,9 @@ const Navbar = () => {
       return;
     }
     const web3authProvider = await web3auth.connect();
-    setProvider(web3authProvider);
+    const web3 = new Web3(web3authProvider);
+    setProvider(web3);
+    window.localStorage.setItem("provider",JSON.stringify(web3));
   };
   const logout = async () => {
     if (!web3auth) {
