@@ -1,5 +1,7 @@
 
-export default function Allsingle({close}) {
+export default function Allsingle({close, uri}) {
+
+    const imguri = `https://ipfs.io/ipfs/${uri}`
     return (
       <main className="fixed w-[100%] h-screen max-h-screen min-h-screen  bg-[#F5F6FF] -mt-[310px] -ml-[263px]  smDesktop:-ml-[252px] tabletAir:-ml-[257px] tablet:-ml-[36px] tablet:-mt-[300px] mobile:-ml-[20px] mobile:-mt-[250px] z-[1]">
   
@@ -16,7 +18,7 @@ export default function Allsingle({close}) {
               </div>
           </div>
           <div className="w-[100%] mx-auto smDesk:mt-[40px]">
-              <img src="/../images/Rectangle.png" alt="" className="w-[45%] lgDesktop:w-[48%] smDesk:w-[600px] tabletAir:w-[500px] mx-auto tabletAir:mt-[60px] mobile:mt-[120px] "/>
+              <img src={imguri} alt="" className="w-[45%] lgDesktop:w-[48%] smDesk:w-[600px] tabletAir:w-[500px]  mx-auto tabletAir:mt-[60px] mobile:mt-[120px] "/>
           </div>
           </section>
       </main>

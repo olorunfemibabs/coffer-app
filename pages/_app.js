@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { store } from "@/Redux/app/store";
 import  { AppWrapper } from "@/hooks/AppContext";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, zora, sepolia],
@@ -25,6 +26,7 @@ const wagmiConfig = createConfig({
   publicClient,
  
 });
+const client = new QueryClient()
 
 export default function App({ Component, pageProps }) {
   return (
@@ -32,7 +34,10 @@ export default function App({ Component, pageProps }) {
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
       {/* <AppWrapper> */}
+      <QueryClientProvider client={client}>
+
         <Component {...pageProps} />
+      </QueryClientProvider>
       {/* </AppWrapper> */}
       </RainbowKitProvider>
     </WagmiConfig>
