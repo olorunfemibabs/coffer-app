@@ -11,7 +11,7 @@ const Card = (props) => {
                 <h1 className="side font-[400] text-[20px] w-[113px] h-[26px] mt-[48px]">{props.folderName}</h1>
             </div>
             <div className='flex w-[342px] mx-auto justify-between h-[46px] mt-[15px] px-[10px] border-l border-l-[#010101]'>
-                <h1 className="side w-[103px] text-center my-[10px] h-[46px] text-[#010101] font-[500] text-[17px] ">67 Photos</h1>
+                <h1 className="side w-[103px] text-center my-[10px] h-[46px] text-[#010101] font-[500] text-[17px] ">{props.photoNum} Photos</h1>
                 <MdOutlineDriveFileRenameOutline className="text-[#010101] h-[24px] w-[24px] my-[10px]" />
             </div>
     </div>
