@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { navLinks } from "../constants";
 import { COFFER } from "../../public/assets";
@@ -17,6 +17,7 @@ import RPC from "@/web3RPC";
 // Adapters
 import { WalletConnectV1Adapter } from "@web3auth/wallet-connect-v1-adapter";
 import { shortenHexWithEllipsis } from "../utils";
+import { GlobalContext } from "@/context/GlobalContext";
 
 const clientId =
   "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
@@ -24,9 +25,10 @@ const clientId =
 const Navbar = () => {
   const router = useRouter();
 
+  const { state, dispatch } = useContext(GlobalContext)
   const [web3auth, setWeb3auth] = useState(null);
   const [provider, setProvider] = useState(null);
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [balance, setBalance] = useState("");
   const [chainId, setChainId] = useState("");
@@ -141,8 +143,12 @@ const Navbar = () => {
     }
     const rpc = new RPC(provider);
     const address = await rpc.getAccounts();
-    console.log(address);
-    setAddress(address);
+    console.log(address)
+    setAddress(address?.code ? null : address);
+    dispatch({
+      type: "SET_ADDRESS",
+      payload: address?.code ? null : address
+    })
   };
 
   const getBalance = async () => {
@@ -228,15 +234,15 @@ const Navbar = () => {
           ))}
 
           <div className="md:ml-6 md:my-0 my-7 mb-[10px]">
-            {address?.length > 0 ?
-              <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]">{shortenHexWithEllipsis(address, 12)}</span>
-              :
+            {state?.address === null ?
               <button
                 onClick={login}
                 className=" bg-[#1321A0] text-[#F5F6FF] rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]"
               >
                 Login
               </button>
+              :
+              <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]">{shortenHexWithEllipsis(state?.address, 12)}</span>
             }
           </div>
         </ul>
