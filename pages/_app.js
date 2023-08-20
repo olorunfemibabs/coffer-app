@@ -5,6 +5,7 @@ import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { mainnet, polygon, optimism, arbitrum, zora } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import GlobalProvider from "@/context/GlobalContext";
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, zora],
@@ -25,7 +26,9 @@ export default function App({ Component, pageProps }) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
-        <Component {...pageProps} />
+        <GlobalProvider>
+          <Component {...pageProps} />
+        </GlobalProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

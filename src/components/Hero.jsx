@@ -25,9 +25,9 @@ const Hero = () => {
           are securely stored on the blockchain, ensuring unparalleled privacy
           and accessibility.
         </p>
-        <div className="mt-8">
+        {/* <div className="mt-8">
           <ConnectButton />
-        </div>
+        </div> */}
       </div>
 
       <div className="flex-1 flex items-center justify-center hidden xl:block md:my-0 my-10 relative ">

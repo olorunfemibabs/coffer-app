@@ -12,13 +12,13 @@ const Testimonials = () => {
       </div>
 
       <div className="flex scrollbar-hide overflow-x-scroll overflow-y-hidden gap-8 flex-nowrap sm:justify-center items-center w-full mt-6 sm:mt-0">
-        {testimonials.slice(0, 3)?.map((card) => (
-          <Testimonial key={card.id} {...card} />
+        {testimonials.slice(0, 3)?.map((card, i) => (
+          <Testimonial key={i} {...card} />
         ))}
       </div>
       <div className="flex scrollbar-hide mt-10 overflow-x-scroll overflow-y-hidden gap-8 flex-nowrap sm:justify-center items-center w-full">
-        {testimonials.slice(3, 6)?.map((card) => (
-          <Testimonial key={card.id} {...card} />
+        {testimonials.slice(3, 6)?.map((card, index) => (
+          <Testimonial key={index} {...card} />
         ))}
       </div>
     </section>

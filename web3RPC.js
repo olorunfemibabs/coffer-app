@@ -1,14 +1,13 @@
-import { Web3 } from "web3";
+const Web3 = require('web3')
 
 export default class RPC {
   constructor(provider) {
-    this.provider = provider;
+    this.provider = Web3.givenProvider;
   }
 
   async getChainId() {
     try {
       const web3 = new Web3(this.provider);
-
       // Get the connected Chain's ID
       const chainId = await web3.eth.getChainId();
 
@@ -23,6 +22,7 @@ export default class RPC {
       const web3 = new Web3(this.provider);
 
       // Get user's Ethereum public address
+      await window.ethereum.enable();
       const address = (await web3.eth.getAccounts())[0];
 
       return address;

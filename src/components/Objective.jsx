@@ -10,9 +10,9 @@ const Objective = () => {
         alt="shelf"
         width={600}
         height={400}
-        className="md:w-[40%] w-full hidden sm:block object-fill z-20"
+        className="md:w-[40%] w-full hidden sm:block object-fill"
       />
-      <div className="md:w-[60%] px-5 sm:px-0 text-white z-10">
+      <div className="md:w-[60%] px-5 sm:px-0 text-white">
         <h2 className="flex justify-end text-[#C5CBFD] gap-2 leading-6 sm:text-2xl text-[32px] font-secondary mb-12 sm:mb-6">
           Who <span className="text-[#5060E9] font-bold">we</span> are
         </h2>
