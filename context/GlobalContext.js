@@ -8,7 +8,6 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_ADDRESS":
-      console.log(action)
       localStorage.setItem("address", action.payload);
       return {
         ...state,
