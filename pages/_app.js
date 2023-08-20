@@ -6,6 +6,8 @@ import { mainnet, polygon, optimism, arbitrum, zora } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import GlobalProvider from "@/context/GlobalContext";
+import { Provider } from "react-redux";
+import { store } from "@/Redux/app/store";
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, zora],
