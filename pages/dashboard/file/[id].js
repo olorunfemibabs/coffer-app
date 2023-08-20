@@ -13,26 +13,7 @@ const FolderItem = () => {
   const router = useRouter();
   const { id } = router.query;
 const name = id?.toString()
-  const images = [
-    {
-      name: "image1",
-    },
-    {
-      name: "image2",
-    },
-    {
-      name: "image3",
-    },
-    {
-      name: "image4",
-    },
-    {
-      name: "image5",
-    },
-    {
-      name: "image6",
-    },
-  ];
+
 
   const [detail, setDetail] = useState([]);
   const { address } = useAccount();
@@ -69,7 +50,7 @@ const name = id?.toString()
         <div className="flex flex-wrap gap-4 mt-4 w-[93%] tablet:w-[90%] mx-auto -z-[10] mobile:items-center minmobile:gap-6">
           {/* <Sharetab /> */}
           {detail?.map((item, index) => {
-            return (<Photos uri={item} key={index} />);
+            return (<Photos name={name} address={address} uri={item} key={index} />);
           })}
         </div>
       </div>

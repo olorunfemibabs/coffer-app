@@ -28,17 +28,17 @@ export default function Sidebar() {
 <div className="flex flex-col gap-3 text-[#C5CBFD] font-normal text-[16px] side">
 
       {menu.map((item, index)=>{
-        const isActive = pathname.startsWith(item.href);
+        const isActive = pathname?.startsWith(item?.href);
         return(
 <Link
-href={item.href}
+href={item?.href}
 key={index}
 className={
   isActive &&"text-[#0E1A87] border-l-[2px] pl-2 border-[#0E1A87] font-bold "
 }
 
 >
-  <h2 className="">{item.name}</h2>
+  <h2 className="">{item?.name}</h2>
 </Link>
         )
       }
