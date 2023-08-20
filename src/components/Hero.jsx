@@ -14,6 +14,8 @@ const Hero = () => {
   const [web3auth, setWeb3auth] = useState(null);
   const { state, dispatch } = useContext(GlobalContext)
   const [loading, setLoading] = useState(false)
+  const token = typeof window !== "undefined" && localStorage.getItem("openlogin_store")
+
   const clientId =
     "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
 
@@ -82,7 +84,7 @@ const Hero = () => {
       try {
         setLoading(false)
         const web3authProvider = await res.connect();
-        setProvider(web3authProvider ?? "https://eth-sepolia.g.alchemy.com/v2/PN7ox_cWivKpFnRnE5YKoJ5Vyp8-Bx5j");
+        console.log(web3authProvider)
         getAccounts();
       } catch (error) {
         console.log(error)
@@ -111,8 +113,7 @@ const Hero = () => {
           and accessibility.
         </p>
         <div className="mt-8">
-          {state?.address === null &&
-            // <ConnectButton />
+          {(state?.address === null && (JSON.parse(token)?.idToken === undefined)) &&
             <button
               onClick={login}
               className="flex items-center gap-2 bg-[#1321A0] text-[#F5F6FF] rounded-[20px] py-[12px] px-[24px] w-fit h-[47px] flex justify-center items-center border-[2px]"
@@ -131,7 +132,7 @@ const Hero = () => {
               }
             </button>
           }
-          {state?.address !== null &&
+          {(state?.address !== null || (JSON.parse(token)?.idToken !== undefined)) &&
             <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-fit h-[47px] flex justify-center items-center border-[2px]">Account Connected</span>
           }
         </div>

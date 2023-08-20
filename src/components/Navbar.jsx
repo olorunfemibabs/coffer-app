@@ -24,6 +24,7 @@ const clientId =
 
 const Navbar = () => {
   const router = useRouter();
+  const token = typeof window !== "undefined" && localStorage.getItem("openlogin_store")
 
   const { state, dispatch } = useContext(GlobalContext)
   const [web3auth, setWeb3auth] = useState(null);
@@ -229,7 +230,7 @@ const Navbar = () => {
           ))}
 
           <div className="md:ml-6 md:my-0 my-7 mb-[10px]">
-            {(state?.address === null) &&
+            {(state?.address === null && (JSON.parse(token)?.idToken === undefined)) &&
               <button
                 onClick={login}
                 className=" bg-[#1321A0] text-[#F5F6FF] rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]"
@@ -237,8 +238,8 @@ const Navbar = () => {
                 Login
               </button>
             }
-            {(state?.address !== null) &&
-              <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]">{shortenHexWithEllipsis(state?.address, 12)}</span>
+            {(state?.address !== null || (JSON.parse(token)?.idToken !== undefined)) &&
+              <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]">{state?.address !== null ? shortenHexWithEllipsis(state?.address, 12) : JSON.parse(token)?.name}</span>
             }
           </div>
 
