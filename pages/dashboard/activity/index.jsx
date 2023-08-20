@@ -6,8 +6,8 @@ import SharedFeatures from '@/features/Shared/SharedFeatures'
 export default function Activity() {
   return (
     <Layout>
-      {/* <ActivityFeatures/> */}
-      <SharedFeatures/>
+      <ActivityFeatures/>
+      {/* <SharedFeatures/> */}
     </Layout>
   )
 }
