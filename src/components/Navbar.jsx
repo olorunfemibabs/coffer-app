@@ -24,7 +24,6 @@ const clientId =
 
 const Navbar = () => {
   const router = useRouter();
-  const token = typeof window !== "undefined" && localStorage.getItem("openlogin_store")
 
   const { state, dispatch } = useContext(GlobalContext)
   const [web3auth, setWeb3auth] = useState(null);
@@ -196,7 +195,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className=" flex items-center justify-between text-[#010101] text-base font-medium">
+      <div className="flex items-center justify-between text-[#010101] text-base font-medium">
         <Link href="/">
           <h2 className="text-black text-3xl uppercase orbitron">Coffer</h2>
         </Link>
@@ -208,7 +207,7 @@ const Navbar = () => {
         </div>
 
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static  md:z-auto z-[100] right-4  w-[70%] md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in-out ${open ? "top-20 bg-[#FFFFFF] rounded-2xl shadow-lg" : "top-[-490px]"
+          className={`md:flex bg-white md:items-center md:pb-0 pb-12 absolute md:static  md:z-auto z-[100] right-4  w-[70%] md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in-out ${open ? "top-20 rounded-2xl shadow-lg" : "top-[-490px]"
             }`}
         >
           {navLinks.map((link) => (
@@ -230,7 +229,7 @@ const Navbar = () => {
           ))}
 
           <div className="md:ml-6 md:my-0 my-7 mb-[10px]">
-            {(state?.address === null && (JSON.parse(token)?.idToken === undefined)) &&
+            {(state?.address === null && (JSON.parse(state?.token)?.idToken === undefined)) &&
               <button
                 onClick={login}
                 className=" bg-[#1321A0] text-[#F5F6FF] rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]"
@@ -238,8 +237,8 @@ const Navbar = () => {
                 Login
               </button>
             }
-            {(state?.address !== null || (JSON.parse(token)?.idToken !== undefined)) &&
-              <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]">{state?.address !== null ? shortenHexWithEllipsis(state?.address, 12) : JSON.parse(token)?.name}</span>
+            {(state?.address !== null || (JSON.parse(state?.token)?.idToken !== undefined)) &&
+              <p className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]">{state?.address !== null ? shortenHexWithEllipsis(state?.address, 12) : (JSON.parse(state?.token)?.name)}</p>
             }
           </div>
 

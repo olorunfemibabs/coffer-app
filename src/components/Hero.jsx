@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { Hero_Image } from "@/public/assets";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { GlobalContext } from "@/context/GlobalContext";
 import RPC from "@/web3RPC";
 import { Web3Auth } from "@web3auth/modal";
@@ -14,7 +13,6 @@ const Hero = () => {
   const [web3auth, setWeb3auth] = useState(null);
   const { state, dispatch } = useContext(GlobalContext)
   const [loading, setLoading] = useState(false)
-  const token = typeof window !== "undefined" && localStorage.getItem("openlogin_store")
 
   const clientId =
     "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
@@ -84,8 +82,13 @@ const Hero = () => {
       try {
         setLoading(false)
         const web3authProvider = await res.connect();
-        console.log(web3authProvider)
-        getAccounts();
+        console.log(Object.keys(web3authProvider))
+        if (Object.keys(web3authProvider).length === 0) {
+          dispatch({
+            type: "SET_TOKEN",
+            payload: (typeof window !== "undefined" && localStorage.getItem("openlogin_store"))
+          })
+        } else getAccounts();
       } catch (error) {
         console.log(error)
         setLoading(false)
@@ -93,7 +96,7 @@ const Hero = () => {
     })
   }
   return (
-    <section className="flex md:flex-row flex-col sm:py-16 py-6 sm-px-16 px- side gap-16 bg-[#F5F6FF]">
+    <section className="flex md:flex-row flex-col sm:py-16 py-6 sm-px-16 px- side gap-16 bg-[#F5F6FF] z-20">
       <div className="flex-2 flex justify-center items-start flex-col xl:px-0 sm:px-6 px-6">
         <div className="flex flex-row justify-between items-center w-full">
           <h1 className="flex-1 font-normal sm:text-[64px] text-[44px] text-[rgb(1,1,1)] sm:leading-[100.8px] leading-[75px] side">
@@ -113,7 +116,7 @@ const Hero = () => {
           and accessibility.
         </p>
         <div className="mt-8">
-          {(state?.address === null && (JSON.parse(token)?.idToken === undefined)) &&
+          {(state?.address === null && (JSON.parse(state?.token)?.idToken === undefined)) &&
             <button
               onClick={login}
               className="flex items-center gap-2 bg-[#1321A0] text-[#F5F6FF] rounded-[20px] py-[12px] px-[24px] w-fit h-[47px] flex justify-center items-center border-[2px]"
@@ -132,7 +135,7 @@ const Hero = () => {
               }
             </button>
           }
-          {(state?.address !== null || (JSON.parse(token)?.idToken !== undefined)) &&
+          {(state?.address !== null || (JSON.parse(state?.token)?.idToken !== undefined)) &&
             <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-fit h-[47px] flex justify-center items-center border-[2px]">Account Connected</span>
           }
         </div>
@@ -142,7 +145,7 @@ const Hero = () => {
         <Image
           src={Hero_Image}
           alt="hero-image"
-          width={570}
+          width={600}
           height={640}
           className=" object-contain"
         />
