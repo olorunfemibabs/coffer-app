@@ -70,7 +70,7 @@ export default function File() {
     <Layout>
         <div className="w-[1200px] mx-auto h-[1000px]">
                 <h1 className="side w-[197px] h-[36px] font-[400] text-[32px] leading-[36px] ">Categories</h1>             
-                <ConnectButton />
+                {/* <ConnectButton /> */}
                <div className="flex flex-wrap w-[1180px] space-x-4">
                    {cards}
                   <Createfolder />

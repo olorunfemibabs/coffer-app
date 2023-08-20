@@ -1,5 +1,6 @@
 /** @format */
 
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { BiLogIn } from "react-icons/bi";
 
 export default function ProfileDropDown() {
@@ -9,6 +10,7 @@ export default function ProfileDropDown() {
         <div className="w-[90%] mx-auto">
           <div className="flex gap-2 my-[35px] items-center font-normal text-[16px] text-[#010101]">
             <BiLogIn />
+            <ConnectButton accountStatus="avatar" label="Logout" chainStatus="none" />
             <h3 className="">Logout</h3>
           </div>
         </div>

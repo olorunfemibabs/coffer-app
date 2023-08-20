@@ -6,9 +6,12 @@ import { mainnet, polygon, optimism, arbitrum, zora, sepolia } from "wagmi/chain
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { Provider } from "react-redux";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { store } from "@/Redux/app/store";
 import  { AppWrapper } from "@/hooks/AppContext";
-
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, zora, sepolia],
   [alchemyProvider({ apiKey: '5ShvcS43c_Wrsfk_jTMZOU0sXXBKaVXP' }), publicProvider()]
@@ -22,19 +25,25 @@ const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
+ 
 });
+const client = new QueryClient()
 
 export default function App({ Component, pageProps }) {
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
-      <AppWrapper>
+      {/* <AppWrapper> */}
+      <QueryClientProvider client={client}>
+
         <Component {...pageProps} />
-      </AppWrapper>
+        <ToastContainer />
+      </QueryClientProvider>
+      {/* </AppWrapper> */}
       </RainbowKitProvider>
     </WagmiConfig>
 
-    </Provider>
+    // </Provider>
   );
 }

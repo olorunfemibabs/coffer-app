@@ -9,7 +9,7 @@ const Hero = () => {
     <section className="flex md:flex-row flex-col sm:py-16 py-6 sm-px-16 px-6 gap-16 bg-[#F5F6FF]">
       <div className="flex-2 flex justify-center items-start flex-col xl:px-0 sm:px-16 px-6">
         <div className="flex flex-row justify-between items-center w-full">
-          <h1 className="flex-1 font-normal sm:text-[64px] text-[44px] text-[#010101] sm:leading-[100.8px] leading-[75px] side">
+          <h1 className="flex-1 font-normal sm:text-[64px] text-[44px] text-[rgb(1,1,1)] sm:leading-[100.8px] leading-[75px] side">
             Unleash Your Memories: <br className="sm:block hidden" />{" "}
             <p>
               Easy <span className="text-[#1b2ab8]">Photo Storage</span>
