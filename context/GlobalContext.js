@@ -8,10 +8,12 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_ADDRESS":
-      localStorage.setItem("address", action.payload);
+      if (action.payload !== nul) {
+        localStorage.setItem("address", action.payload);
+      }
       return {
         ...state,
-        address: localStorage.getItem("address"),
+        address: localStorage.getItem("address") ?? null,
       };
     default:
       return state;

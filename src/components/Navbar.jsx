@@ -144,7 +144,6 @@ const Navbar = () => {
     }
     const rpc = new RPC(provider);
     const address = await rpc.getAccounts();
-    console.log(address)
     setAddress(address?.code ? null : address);
     dispatch({
       type: "SET_ADDRESS",
@@ -230,17 +229,19 @@ const Navbar = () => {
           ))}
 
           <div className="md:ml-6 md:my-0 my-7 mb-[10px]">
-            {(state?.address === null || (localStorage.getItem("address") === "null")) ?
+            {(state?.address === null) &&
               <button
                 onClick={login}
                 className=" bg-[#1321A0] text-[#F5F6FF] rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]"
               >
                 Login
               </button>
-              :
+            }
+            {(state?.address !== null) &&
               <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]">{shortenHexWithEllipsis(state?.address, 12)}</span>
             }
           </div>
+
         </ul>
       </div>
     </div>
