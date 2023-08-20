@@ -48,15 +48,14 @@ export default function Home() {
           <Deals />
         </div>
       </div>
-      <div className="bg-[#F5F6FF] md:px-16 px-6 py-6 flex justify-center items-start">
+      <div className="bg-[#F5F6FF] md:px-16 px-6 pt-6 pb-24 flex justify-center items-start">
         <div className="w-full">
           <Testimonials />
         </div>
       </div>
 
-      <div className="bg-[#F5F6FF] md:px-16 px-6 py-6 flex justify-center items-start">
+      <div className="bg-mainColor md:px-16 px-6 py-6 flex justify-center items-start">
         <div className="xl:max-w-[1280px] w-full">
-          <Goal />
           <Footer />
         </div>
       </div>

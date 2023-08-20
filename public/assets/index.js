@@ -14,6 +14,7 @@ import miles from "./miles.png";
 import safe_security_shield from "./safe_security_shield.png";
 import charm_tick_double from "./charm_tick_double.svg";
 import shelf_design from "./shelf_design.png";
+import github from "./github.svg";
 import COFFER from "./COFFER.png";
 import Star_1 from "./Star_1.png";
 import Ellipse_1 from "./Ellipse_1.png";
@@ -38,4 +39,5 @@ export {
   COFFER,
   Star_1,
   Ellipse_1,
+  github,
 };

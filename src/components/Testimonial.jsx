@@ -13,7 +13,7 @@ const Testimonial = ({ image, name, username, comment }) => (
         <span>{username}</span>
       </div>
     </div>
-    <p className="text-xs font-normal mt-1 tracking-[0.156px] text-black">{comment}</p>
+    <p className="text-xs pt-2 font-normal mt-1 tracking-[0.156px] text-black">{comment}</p>
   </div>
 );
 
