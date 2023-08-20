@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
-import Sharetab from './file/components/Sharetab';
-import Photos from './file/components/Photos';
+import Sharetab from '../file/components/Sharetab';
+import Photos from '../file/components/Photos';
 
 const FolderItem = () => {
     const router = useRouter();

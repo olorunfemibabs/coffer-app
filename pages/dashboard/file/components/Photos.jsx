@@ -12,7 +12,7 @@ const Photos = (props) => {
  }
  
  return (
-    <div className="w-[1186px] mx-auto h-[96px] rounded-[16px] bg-[#C5CBFD] mt-[14px]">
+    <div className="w-[1186px] mx-auto h-[96px] rounded-[16px] border-[#C5CBFD] mt-[14px]">
         <div className="flex justify-between py-[10px] px-[35px]">
             <div className="flex space-x-6">
                 <Image src={Rectangle} alt='photo' width={70} height={60}  className="rounded-[8px] cursor-pointer"/>
