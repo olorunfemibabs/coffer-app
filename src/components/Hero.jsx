@@ -8,10 +8,12 @@ import { Web3Auth } from "@web3auth/modal";
 import { CHAIN_NAMESPACES } from "@web3auth/base";
 import { MetamaskAdapter } from "@web3auth/metamask-adapter";
 import { WalletConnectV1Adapter } from "@web3auth/wallet-connect-v1-adapter";
+import { ColorRing } from "react-loader-spinner";
 
 const Hero = () => {
   const [web3auth, setWeb3auth] = useState(null);
   const { state, dispatch } = useContext(GlobalContext)
+  const [loading, setLoading] = useState(false)
   const clientId =
     "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
 
@@ -65,12 +67,9 @@ const Hero = () => {
   };
 
   const getAccounts = async () => {
-    if (!provider) {
-      console.log("provider not initialized yet");
-      return;
-    }
     const rpc = new RPC();
     const address = await rpc.getAccounts();
+    setLoading(false)
     dispatch({
       type: "SET_ADDRESS",
       payload: address?.code ? null : address
@@ -78,17 +77,16 @@ const Hero = () => {
   };
 
   const login = async () => {
-    // if (!web3auth) {
-    //   console.log("web3auth not initialized yet");
-    //   return;
-    // }
+    setLoading(true)
     init().then(async (res) => {
       try {
+        setLoading(false)
         const web3authProvider = await res.connect();
         setProvider(web3authProvider ?? "https://eth-sepolia.g.alchemy.com/v2/PN7ox_cWivKpFnRnE5YKoJ5Vyp8-Bx5j");
         getAccounts();
       } catch (error) {
         console.log(error)
+        setLoading(false)
       }
     })
   }
@@ -117,9 +115,20 @@ const Hero = () => {
             // <ConnectButton />
             <button
               onClick={login}
-              className=" bg-[#1321A0] text-[#F5F6FF] rounded-[20px] py-[12px] px-[24px] w-fit h-[47px] flex justify-center items-center border-[2px]"
+              className="flex items-center gap-2 bg-[#1321A0] text-[#F5F6FF] rounded-[20px] py-[12px] px-[24px] w-fit h-[47px] flex justify-center items-center border-[2px]"
             >
               Connect Wallet
+              {loading &&
+                <ColorRing
+                  visible={true}
+                  height="30"
+                  width="30"
+                  ariaLabel="blocks-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="blocks-wrapper"
+                  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                />
+              }
             </button>
           }
           {state?.address !== null &&
