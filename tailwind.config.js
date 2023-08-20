@@ -20,8 +20,9 @@ module.exports = {
         smDesk: { max: "917px" }, // small desktop
         tabletAir: { max: "824px" }, // big tablet
         tablet: { max: "770px" },
-        surfDuo: { max: "540" },
+        surfDuo: { max: "544" },
         mobile: { max: "480px" },
+        minmobile: { max: "395px" },
         smMobile: { max: "320px" },
       },
       backgroundImage: {
