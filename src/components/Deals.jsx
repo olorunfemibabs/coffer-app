@@ -14,7 +14,7 @@ const Deals = () => {
         </h2>
       </div>
 
-      <div className="flex scrollbar-hide overflow-x-scroll overflow-y-hidden gap-8 flex-nowrap sm:justify-center items-end w-full mt-6 sm:mt-0">
+      <div className="flex scrollbar-hide overflow-x-scroll overflow-y-hidden gap-8 flex-nowrap lg:justify-center items-end w-full mt-6 sm:mt-0">
         {prices?.map((card) => (
           <Plan key={card.id} {...card} />
         ))}

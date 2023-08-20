@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Hero_Image } from "@/public/assets";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { GlobalContext } from "@/context/GlobalContext";
 
 const Hero = () => {
+
+  const { state, dispatch } = useContext(GlobalContext)
   return (
     <section className="flex md:flex-row flex-col sm:py-16 py-6 sm-px-16 px- side gap-16 bg-[#F5F6FF]">
       <div className="flex-2 flex justify-center items-start flex-col xl:px-0 sm:px-6 px-6">
@@ -26,7 +29,11 @@ const Hero = () => {
           and accessibility.
         </p>
         <div className="mt-8">
-          <ConnectButton />
+          {state?.address === null ?
+            <ConnectButton />
+            :
+            <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-fit h-[47px] flex justify-center items-center border-[2px]">Wallet Connected</span>
+          }
         </div>
       </div>
 
