@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const FeatureCard = ({ img, title, content }) => (
-  <div className="border border-[#C5CBFD] sm:w-[400px] w-full flex flex-col justify-start sm:justify-center items-start sm:py-[23px] py-10 px-[26px] rounded-3xl  sm:max-h-fit bg-[#f5f6ff]">
+  <div className="border border-[#C5CBFD] min-w-[340px] sm:w-[400px] w-full flex flex-col justify-start sm:justify-center items-start sm:py-[23px] py-10 px-[26px] rounded-3xl  sm:max-h-fit bg-[#f5f6ff]">
     <Image
       src={img}
       alt="content_image"

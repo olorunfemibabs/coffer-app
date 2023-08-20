@@ -20,7 +20,7 @@ const Business = () => (
       </div>
     </div>
 
-    <div className="flex overflow-x-scroll overflow-y-hidden gap-8 flex-nowrap sm:justify-start w-full mt-6 pt-12 sm:mt-0">
+    <div className="flex scrollbar-hide overflow-x-scroll overflow-y-hidden gap-8 flex-nowrap sm:justify-start w-full mt-6 pt-12 sm:mt-0">
       {features?.map((card) => (
         <FeatureCard key={card.id} {...card} />
       ))}

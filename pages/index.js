@@ -39,7 +39,7 @@ export default function Home() {
         <Objective />
       </div>
 
-      <div className="bg-objective-pattern bg-no-repeat bg-cover sm:bg-none sm:bg-[#C5CBFD] flex justify-center items-start">
+      <div className="bg-flow-pattern bg-no-repeat bg-fill bg-bottom sm:bg-none bg-[#C5CBFD] flex justify-center items-start">
         <Exist />
       </div>
 

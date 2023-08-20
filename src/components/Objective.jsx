@@ -14,7 +14,7 @@ const Objective = () => {
       />
       <div className="md:w-[60%] px-5 sm:px-0 text-white z-10">
         <h2 className="flex justify-end text-[#C5CBFD] gap-2 leading-6 sm:text-2xl text-[32px] font-secondary mb-12 sm:mb-6">
-          Who <span className="text-[#5060E9]">we</span> are
+          Who <span className="text-[#5060E9] font-bold">we</span> are
         </h2>
         <div className="text-base side font-normal leading-normal text-black sm:text-white">
           <p className="pb-3 text-justify">
