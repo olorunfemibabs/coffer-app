@@ -2,7 +2,7 @@ import FeatureCard from "./FeatureCard";
 import { features } from "../constants";
 
 const Business = () => (
-  <section className="sm:py-16 py-6 ">
+  <section className="sm:py-16 py-8">
     <div className="w-full flex flex-col justify-center items-center sm:mb-16 mb- relative">
       <h2 className="sid font-secondary text-center font-bold md:text-[64px] text-[32px] text-[#1B2AB8] xs:leading-[72px] leading-[47.39px] w-full">
         <div className="space-x-8 items-center mb-3 tracking-10">
