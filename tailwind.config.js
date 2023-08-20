@@ -25,13 +25,18 @@ module.exports = {
         smMobile: { max: "320px" },
       },
       backgroundImage: {
+        'objective-pattern': "url('../public/assets/shelf_design.png')",
+        'flow-pattern': "url('../public/assets/flow_design.png')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        mainColor: "#3849DD"
+      },
       fontFamily: {
-        primary: ['"Space Grotesk"'],
-        secondary: ['"Space Mono"'],
+        primary: ['Space Grotesk'],
+        secondary: ['Space Mono'],
       },
     },
   },
