@@ -167,7 +167,7 @@ const Navbar = () => {
 
         <ul
           className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static  md:z-auto z-[100] right-4  w-[70%] md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in-out ${
-            open ? "top-20 bg-[#FFFFFF] rounded-2xl shadow-lg" : "top-[-490px]"
+            open ? "top-20 bg-[#98A1F9] rounded-2xl shadow-lg" : "top-[-490px]"
           }`}
         >
           {navLinks.map((link) => (
