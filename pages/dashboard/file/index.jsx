@@ -68,10 +68,10 @@ export default function File() {
 
   return (
     <Layout>
-        <div className="w-[1200px] mx-auto h-[1000px]">
+        <div className="w-[90%] mx-auto ">
                 <h1 className="side w-[197px] h-[36px] font-[400] text-[32px] leading-[36px] ">Categories</h1>             
                 {/* <ConnectButton /> */}
-               <div className="flex flex-wrap w-[1180px] space-x-4">
+               <div className="flex flex-wrap w-[96%] gap-6 lgDesktop:gap-4 mx-auto mobile:pb-24">
                    {cards}
                   <Createfolder />
                </div>
