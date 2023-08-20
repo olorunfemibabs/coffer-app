@@ -1,6 +1,6 @@
 import React from "react";
 import Social from "./Socials";
-import { github } from "@/public/assets";
+import { ic_baseline_discord, mdi_github, twitter } from "@/public/assets";
 
 const Footer = () => {
   return (
@@ -11,9 +11,9 @@ const Footer = () => {
           <div className="w-full sm:w-[50%] py-10">
             <span className="grotesk block">Enjoy decentralized Photo storage, high security , unlimited capacity , and easy organization</span>
             <div className="sm:flex sm:space-x-4 items-center space-y-3 sm:space-y-0 mt-10">
-              <Social name="Github" icon={github} />
-              <Social name="Discord" icon={github} />
-              <Social name="Twitter" icon={github} />
+              <Social name="Github" icon={mdi_github} />
+              <Social name="Discord" icon={ic_baseline_discord} />
+              <Social name="Twitter" icon={twitter} />
             </div>
           </div>
 
@@ -45,11 +45,11 @@ const Footer = () => {
 
       <hr className="mt-6 sm:mt-24" />
       <div className="px-6 grotesk text-xs mt-2 text-[#C5CBFD] sm:flex justify-between">
-        <div className="space-x-3 block text-center w-full my-3">
+        <div className="space-x-3 block text-center sm:text-start w-full my-3">
           <span className="pb-2">Privacy Policy</span>
           <span className="pb-2">Terms of Use</span>
         </div>
-        <span className=" block text-center w-full mt-2">&copy; 2023 <span className="pl-2"> All rights reserved</span></span>
+        <span className=" block text-center sm:text-end w-full mt-2">&copy; 2023 <span className="pl-2"> All rights reserved</span></span>
       </div>
     </div>
   )

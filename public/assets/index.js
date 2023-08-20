@@ -13,8 +13,10 @@ import Metamask_logo from "./Metamask_logo.png";
 import miles from "./miles.png";
 import safe_security_shield from "./safe_security_shield.png";
 import charm_tick_double from "./charm_tick_double.svg";
+import ic_baseline_discord from "./ic_baseline_discord.svg";
+import twitter from "./twitter.svg";
+import mdi_github from "./mdi_github.svg";
 import shelf_design from "./shelf_design.png";
-import github from "./github.svg";
 import COFFER from "./COFFER.png";
 import Star_1 from "./Star_1.png";
 import Ellipse_1 from "./Ellipse_1.png";
@@ -39,5 +41,7 @@ export {
   COFFER,
   Star_1,
   Ellipse_1,
-  github,
+  ic_baseline_discord,
+  mdi_github,
+  twitter,
 };
