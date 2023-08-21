@@ -7,7 +7,7 @@ import { Web3Auth } from "@web3auth/modal";
 import { CHAIN_NAMESPACES } from "@web3auth/base";
 import { MetamaskAdapter } from "@web3auth/metamask-adapter";
 import { WalletConnectV1Adapter } from "@web3auth/wallet-connect-v1-adapter";
-import { ColorRing } from "react-loader-spinner";
+// import { ColorRing } from "react-loader-spinner";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Star_1 } from "@/public/assets";
 
