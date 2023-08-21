@@ -33,13 +33,13 @@ const name = id?.toString()
     }
   }, [isSuccess, data]);
   console.log('me',detail.uri)
-
+  
   return (
     <Layout>
       <div className="w-[100%] mx-auto">
         <div className="flex items-center justify-between w-[96%] tablet:w-[90%] mx-auto">
           <h1 className="side font-[400] text-[32px] leading-[36px] ">{id}</h1>
-          <Link href="[name]/dynamic/[name]" as={`${name}/dynamic/${name}`}>
+          <Link href={`/dashboard/file/dynamic/${name}`}>
           <button className="bg-[#5060E9] flex w-[189px] h-[48px] mobile:w-[150px] mobile:h-[38px] rounded-xl items-center  text-[#FEFEFE] mobile:text-[12px] justify-center side gap-2">
             <p>Upload Photo</p>
             <img

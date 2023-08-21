@@ -1,8 +1,8 @@
 /** @format */
 
-import  { useRef, useState } from "react";
+import  { useRef, useState, useEffect } from "react";
 import main from '../Upload/ipfs.mjs'
-import { useContractWrite, usePrepareContractWrite } from 'wagmi'
+import { useContractWrite, usePrepareContractWrite, useAccount } from 'wagmi'
 import { contractAddress } from "@/constants/contract";
 import ABI from "@/constants/ABI/url.json";
 
@@ -12,6 +12,7 @@ export default function Upload(prop) {
   const hiddenFileInput = useRef(null);
   const [file, setFile] = useState('');
   const [uri, setURi] = useState('')
+  const {address} = useAccount();
 
   const handleChange = (event) => {
     const fileUploaded = event.target.files[0];
@@ -24,16 +25,23 @@ export default function Upload(prop) {
   };
   const handleIPFSUpload = async () =>{
     await main(file, 'image', 'Image upload').then((data) => {
+      setURi(data.ipnft);
       console.log(data.ipnft)
   })
   }
 
-  const { data, isLoading, isSuccess, write } = useContractWrite({
+  const { data, isLoading, isSuccess, write: callUpload } = useContractWrite({
     address: contractAddress,
     abi: ABI,
     functionName: 'uploadURI',
-    args: []
+    args: [address,prop.Foldername,uri]
   })
+  useEffect(() => {
+    if(uri != ''){
+      callUpload?.();
+    }
+  }, [uri])
+  
 
   return (
     <main className="w-[80%] smDesktop:w-[85%]  mx-auto smDesk:w-[90%] tabletAir:w-[100%]">
