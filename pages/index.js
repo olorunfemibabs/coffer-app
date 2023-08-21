@@ -12,7 +12,7 @@ import Testimonials from "@/src/components/Testimonials";
 
 export default function Home() {
   return (
-    <main className=" w-screen h-screen bg-[#F5F6FF]">
+    <main className=" w-screen h-screen overflow-x-hidden bg-[#F5F6FF]">
       <div className=" sm:px-16 px-6 py-6 flex justify-center items-center">
         <div className="xl:max-w-[1280px] w-full">
           <Navbar />

@@ -49,7 +49,7 @@ const Footer = () => {
           <span className="pb-2">Privacy Policy</span>
           <span className="pb-2">Terms of Use</span>
         </div>
-        <span className=" block text-center sm:text-end w-full mt-2">&copy; 2023 <span className="pl-2"> All rights reserved</span></span>
+        <p className=" block text-center sm:text-end w-full mt-2">&copy; 2023 <span className="pl-2"> All rights reserved</span></p>
       </div>
     </div>
   )

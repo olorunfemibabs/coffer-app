@@ -3,6 +3,7 @@ export const GlobalContext = createContext();
 
 const initialState = {
   address: null,
+  token: null,
 };
 
 const reducer = (state, action) => {
@@ -14,6 +15,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         address: localStorage.getItem("address") ?? null,
+      };
+    case "SET_TOKEN":
+      return {
+        ...state,
+        token: localStorage.getItem("openlogin_store"),
       };
     default:
       return state;
