@@ -2,7 +2,7 @@
 export default function NoActivity() {
   return (
     <main>
-        <section className="h-full">
+        <section className="h-full mt-8">
             <div className="mx-auto flex justify-center items-center w-[100%] mobile:mt-16">
             <img src="/../images/Mobile.svg" className="w-[516px] mobile:w-[280px]"/>
 

@@ -10,6 +10,7 @@ import { ethers } from 'ethers';
 import { useState } from "react"
 import { contractAddress } from "@/constants/contract";
 import ABI from "@/constants/ABI/url.json";
+import CreateFolder from "../../../components/CreateFolder"
 
 
 
@@ -17,6 +18,7 @@ import ABI from "@/constants/ABI/url.json";
 export default function File() {
   const {address} = useAccount(); 
   const [cards, setCards] = useState([]);
+  const [openFolder, setOpenFolder] = useState(false)
   // const [photoNumber, setPhotoNumber] = useState('');
   
   const { data : folderArrayData, isError, isLoading, isSuccess } = useContractRead({
@@ -70,12 +72,21 @@ export default function File() {
 
   return (
     <Layout>
-        <div className="w-[1200px] mx-auto h-[1000px]">
+        <div className="w-[90%] mx-auto ">
                 <h1 className="side w-[197px] h-[36px] font-[400] text-[32px] leading-[36px] ">Categories</h1>             
                 {/* <ConnectButton /> */}
-               <div className="flex flex-wrap w-[1180px] space-x-4">
+               <div className="flex flex-wrap w-[96%] gap-6 lgDesktop:gap-4 mx-auto mobile:pb-24">
                    {cards}
-                  <Createfolder />
+                  <Createfolder open={()=>setOpenFolder(true)} />
+
+                  {  openFolder &&
+
+                  <div
+          className={`absolute bg-[#f5f6ff] opacity-[90%] left-0 z-[90] } absolute top-0 right-0 w-[100%] h-[100%]`}
+        >
+          <CreateFolder close={() =>setOpenFolder(false)} />
+        </div>
+                  }
                </div>
                 
         </div>

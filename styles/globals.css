@@ -10,12 +10,36 @@ body {
   box-sizing: border-box;
   font-family: 'Space Grotesk', sans-serif;
 }
-.logo{
+
+.logo {
   font-family: 'Orbitron', sans-serif;
   font-style: 'Orbitron', sans-serif;
 }
 
-.side{
+.side {
   font-family: 'Space Mono', monospace;
- 
+}
+
+.grotesk {
+  font-family: 'Space Grotesk', monospace;
+}
+
+.orbitron {
+  font-family: 'Orbitron', monospace;
+}
+
+.linear_col {
+  background: linear-gradient(93deg, #0E1A87 0%, #217E36 14.94%, #69B54B 29.68%, #ACC54B 47.66%, #549F9A 62.33%, #876A60 82.95%, #D04455 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
