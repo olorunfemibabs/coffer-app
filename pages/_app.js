@@ -42,11 +42,7 @@ export default function App({ Component, pageProps }) {
     <Provider store={store}>
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
-      {/* <AppWrapper> */}
       <ChakraProvider>
-      <QueryClientProvider client={client}>
-
-        <Component {...pageProps} />
         <QueryClientProvider client={client}>
         <GlobalProvider>
             <Component {...pageProps} />
@@ -54,7 +50,6 @@ export default function App({ Component, pageProps }) {
         <ToastContainer />
       </QueryClientProvider>
       </ChakraProvider>
-      {/* </AppWrapper> */}
       </RainbowKitProvider>
     </WagmiConfig>
 
