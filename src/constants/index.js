@@ -54,14 +54,14 @@ export const clients = [
 export const features = [
   {
     id: "feature-1",
-    img: database,
+    img: cloud_storage,
     title: "Decentralized Storage",
     content:
       "Unlike traditional storage services that rely on centralized servers, our Dapp utilizes blockchain technology to store your photos across multiple nodes. This eliminates the risk of your precious memories being lost or compromised due to server failures or cyber-attacks.",
   },
   {
     id: "feature-2",
-    img: cloud_storage,
+    img: database,
     title: "Streamlined Organization",
     content:
       "Tired of spending hours searching for a specific photo? Our Photo Storage Dapp features intelligent organization and search capabilities, making searching for a particular memory hassle-free.",
@@ -74,6 +74,69 @@ export const features = [
       "We understand that your photo memories are personal and sensitive. With advanced encryption protocols and private keys, our Dapp ensures that only you can access your photos. Say goodbye to privacy concerns and enjoy the peace that comes with knowing your memories are safe.",
   },
 ];
+export const prices = [
+  {
+    id: "Basic",
+    price: "Free",
+    text: "Discover Coffer",
+    content: "Key Features",
+    volume: 10000
+  },
+  {
+    id: "Premium",
+    price: "20USDT",
+    text: "The best option for individual creator",
+    content: "Everything in Professional, plus",
+    volume: 50000
+  },
+  {
+    id: "Professional",
+    price: "18USDT",
+    text: "Built for memories and experience",
+    content: "Everything in basic, plus",
+    volume: 30000
+  },
+
+];
+
+export const testimonials = [
+  {
+    name: "Bessie Cooper",
+    image: bessie,
+    username: "@helena",
+    comment: "Productize put it on the parking lot yet bench mark this vendor is incompetent let me know if you need me to crack any skulls."
+  },
+  {
+    name: "Kristin Watson",
+    image: kristin,
+    username: "@inner",
+    comment: "I just discovered Coffer, a web 3.0 photo storage DApp that lets me store and share my photos securely and privately on the blockchain. It’s amazing! #Coffer #Web3 #PhotoStorage"
+  },
+  {
+    name: "Kell/Kells/Kelly",
+    image: kelly,
+    username: "@tickone",
+    comment: "Je viens de découvrir Coffer, une DApp de stockage de photos web 3.0 qui me permet de stocker et de partager mes photos en toute sécurité et confidentialité sur la blockchain. C’est incroyable ! #Coffer #Web3 #PhotoStorage"
+  },
+  {
+    name: "Kemmy Kay",
+    image: kemmy,
+    username: "@kemmybae",
+    comment: "I just discovered Coffer, a web 3.0 photo storage DApp that lets me store and share my photos securely and privately on the blockchain. It’s amazing! #Coffer #Web3 #PhotoStorage"
+  },
+  {
+    name: "Chris Thread",
+    image: chris,
+    username: "@threader",
+    comment: "Je viens de découvrir Coffer, une DApp de stockage de photos web 3.0 qui me permet de stocker et de partager mes photos en toute sécurité et confidentialité sur la blockchain. C’est incroyable ! #Coffer #Web3 #PhotoStorage"
+  },
+  {
+    name: "Miles Rock",
+    image: miles,
+    username: "@de_rock",
+    comment: "Productize put it on the parking lot yet bench mark this vendor is incompetent let me know if you need me to crack any skulls."
+  }
+]
 
 export const feedback = [
   {
