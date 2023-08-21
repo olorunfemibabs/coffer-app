@@ -8,6 +8,7 @@ import { useEffect } from "react"
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { ethers } from 'ethers';
 import { useState } from "react"
+import CreateFolder from "../../../components/CreateFolder"
 
 
 
@@ -15,6 +16,7 @@ import { useState } from "react"
 export default function File() {
   const {address} = useAccount(); 
   const [cards, setCards] = useState([]);
+  const [openFolder, setOpenFolder] = useState(false)
   // const [photoNumber, setPhotoNumber] = useState('');
   
   const { data : folderArrayData, isError, isLoading, isSuccess } = useContractRead({
@@ -73,7 +75,16 @@ export default function File() {
                 {/* <ConnectButton /> */}
                <div className="flex flex-wrap w-[96%] gap-6 lgDesktop:gap-4 mx-auto mobile:pb-24">
                    {cards}
-                  <Createfolder />
+                  <Createfolder open={()=>setOpenFolder(true)} />
+
+                  {  openFolder &&
+
+                  <div
+          className={`absolute bg-[#f5f6ff] opacity-[90%] left-0 z-[90] } absolute top-0 right-0 w-[100%] h-[100%]`}
+        >
+          <CreateFolder close={() =>setOpenFolder(false)} />
+        </div>
+                  }
                </div>
                 
         </div>

@@ -48,7 +48,7 @@ className={
 </div>
 <div className="mt-[250px] smDesktop:mt-[100px] smDesk:mt-[600px] tabletAir:mt-[500px]">
 
-<div className="flex w-[140px] -ml-[10px] pl-[20px] font-normal py-[8px]     border-[1px] rounded-xl text-[16px] text-[#0E1A87] gap-2 bg-[#F5F6FF]">
+<div className="flex w-[140px] -ml-[40px] pl-[20px] font-normal py-[8px]     border-[1px] rounded-xl text-[16px] text-[#0E1A87] gap-2 bg-[#F5F6FF]">
   <h5 className="">
   Upgrade
   </h5>

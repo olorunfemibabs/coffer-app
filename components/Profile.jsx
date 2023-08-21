@@ -11,7 +11,12 @@ export default function Profile() {
   const [open, setOpen] = useState(false);
 
   const handleclick=()=>{
-    setOpen(!open)
+    if(open === true){
+      setOpen(false)
+    }
+    else{
+      setOpen(true)
+    }
   }
   return (
     <div className="" >
@@ -33,7 +38,7 @@ export default function Profile() {
       <div className="">
 
 {
-!open &&
+open &&
     <ProfileDropDown />
 }
       </div>

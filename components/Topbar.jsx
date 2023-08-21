@@ -8,7 +8,7 @@ export default function Topbar() {
         <section className="w-[90%] mx-auto">
             <div className="flex justify-between items-center pt-5">
             <h1  className='text-[32px] font-semibold leading-[48px] logo'>
-                <a href="/dashboard"> COFFER</a>
+                <a href="/dashboard/home"> COFFER</a>
                 </h1>
             <div className="tablet:hidden w-[50%]  pl-[8px] flex border-[1px] items-center rounded-lg h-[45px] border-[#C5CBFD] focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-2">
             <CiSearch size={20} className='text-[#3849DD] mr-2'/>
