@@ -37,21 +37,21 @@ export default function BottomMenu() {
       <section className="bg-[#5060E9] w-[100%] h-[104px] rounded-t-3xl">
         <div className="w-[80%] pt-[20px] mx-auto flex justify-between">
           {menu.map((item, index) => {
-            const isActive = pathname.startsWith(item.href);
+            const isActive = pathname?.startsWith(item?.href);
             return (
               <Link
                 key={index}
-                href={item.href}
+                href={item?.href}
                 className="flex items-center flex-col"
               >
                 {!isActive ? (
-                  <img src={item.icon} className=" w-[30px] h-[30px] surfDuo:w-[20px] surfDuo:h-[20px] mobile:w-[20px] mobile:h-[20x] "/>
+                  <img src={item?.icon} className=" w-[30px] h-[30px] surfDuo:w-[20px] surfDuo:h-[20px] mobile:w-[20px] mobile:h-[20x] "/>
                 ) : (
-                  <img src={item.activeIcon}  className=" w-[30px] h-[30px] surfDuo:w-[20px] surfDuo:h-[20px] mobile:w-[20px] mobile:h-[20x]" />
+                  <img src={item?.activeIcon}  className=" w-[30px] h-[30px] surfDuo:w-[20px] surfDuo:h-[20px] mobile:w-[20px] mobile:h-[20x]" />
                 )}
 
                 <h2 className={`text-[24px] surfDuo:text-[16px] mobile:text-[14px] font-normal mt-1 side  ${isActive ? "text-[#0E1A87]" : "text-[#FEFEFE]"}`}>
-                  {item.name}
+                  {item?.name}
                 </h2>
               </Link>
             );
