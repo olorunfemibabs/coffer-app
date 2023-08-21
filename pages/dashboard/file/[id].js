@@ -2,12 +2,13 @@
 
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
-import Sharetab from "../file/components/Sharetab";
-import Photos from "../file/components/Photos";
+import Sharetab from "./components/Sharetab";
+import Photos from "./components/Photos";
 import { useEffect, useState } from "react";
 import { useAccount, useContractRead } from "wagmi";
 import { contractAddress } from "@/constants/contract";
 import URI from "@/constants/ABI/url.json";
+import Link from "next/link";
 
 const FolderItem = () => {
   const router = useRouter();
@@ -38,6 +39,7 @@ const name = id?.toString()
       <div className="w-[100%] mx-auto">
         <div className="flex items-center justify-between w-[96%] tablet:w-[90%] mx-auto">
           <h1 className="side font-[400] text-[32px] leading-[36px] ">{id}</h1>
+          <Link href="[name]/dynamic/[name]" as={`${name}/dynamic/${name}`}>
           <button className="bg-[#5060E9] flex w-[189px] h-[48px] mobile:w-[150px] mobile:h-[38px] rounded-xl items-center  text-[#FEFEFE] mobile:text-[12px] justify-center side gap-2">
             <p>Upload Photo</p>
             <img
@@ -46,6 +48,7 @@ const name = id?.toString()
               className="w-[24px] h-[24px] mobile:w-[18px] mobile:h-[18px] "
             />
           </button>
+          </Link>
         </div>
         <div className="flex flex-wrap gap-4 mt-4 w-[93%] tablet:w-[90%] mx-auto -z-[10] mobile:items-center minmobile:gap-6">
           {/* <Sharetab /> */}
