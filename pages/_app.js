@@ -14,6 +14,7 @@ import  { AppWrapper } from "@/hooks/AppContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { ChakraProvider } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
 
 const { chains, publicClient } = configureChains(
@@ -42,12 +43,17 @@ export default function App({ Component, pageProps }) {
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
       {/* <AppWrapper> */}
+      <ChakraProvider>
+      <QueryClientProvider client={client}>
+
+        <Component {...pageProps} />
         <QueryClientProvider client={client}>
         <GlobalProvider>
             <Component {...pageProps} />
           </GlobalProvider>
         <ToastContainer />
       </QueryClientProvider>
+      </ChakraProvider>
       {/* </AppWrapper> */}
       </RainbowKitProvider>
     </WagmiConfig>
