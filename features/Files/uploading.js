@@ -5,6 +5,7 @@ import main from '../Upload/ipfs.mjs'
 import { useContractWrite, usePrepareContractWrite, useAccount } from 'wagmi'
 import { contractAddress } from "@/constants/contract";
 import ABI from "@/constants/ABI/url.json";
+import Loading from '../../components/Loading.js'
 
 
 export default function Upload(prop) {
@@ -13,6 +14,7 @@ export default function Upload(prop) {
   const [file, setFile] = useState('');
   const [uri, setURi] = useState('')
   const {address} = useAccount();
+  const [loadState, setLoadstate] = useState(false);
 
   const handleChange = (event) => {
     const fileUploaded = event.target.files[0];
@@ -24,6 +26,7 @@ export default function Upload(prop) {
     
   };
   const handleIPFSUpload = async () =>{
+    setLoadstate(true);
     await main(file, 'image', 'Image upload').then((data) => {
       setURi(data.ipnft);
       console.log(data.ipnft)
@@ -39,12 +42,14 @@ export default function Upload(prop) {
   useEffect(() => {
     if(uri != ''){
       callUpload?.();
+      setLoadstate(false);
     }
   }, [uri])
   
 
   return (
     <main className="w-[80%] smDesktop:w-[85%]  mx-auto smDesk:w-[90%] tabletAir:w-[100%]">
+      {loadState && <Loading />}
       <section className="w-[80%] smDesktop:w-[94%] mr-auto tabletAir:w-[96%] tablet:mr-0 tablet:w-[100%]">
         <section className="flex items-center justify-between">
           <div className="flex items-center">
