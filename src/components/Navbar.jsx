@@ -24,6 +24,8 @@ const clientId =
 
 const Navbar = () => {
   const router = useRouter();
+  const token =
+    typeof window !== "undefined" && localStorage.getItem("openlogin_store");
 
   const { state, dispatch } = useContext(GlobalContext);
   const [web3auth, setWeb3auth] = useState(null);
@@ -82,7 +84,7 @@ const Navbar = () => {
         if (web3auth.connected) {
           setLoggedIn(true);
         }
-        getAccounts();
+        // getAccounts()
       } catch (error) {
         console.error(error);
       }
@@ -94,6 +96,7 @@ const Navbar = () => {
   }, [provider]);
 
   const login = async () => {
+    setOpen(false);
     if (!web3auth) {
       console.log("web3auth not initialized yet");
       return;
@@ -149,7 +152,6 @@ const Navbar = () => {
     }
     const rpc = new RPC(provider);
     const address = await rpc.getAccounts();
-    console.log(address);
     setAddress(address?.code ? null : address);
     dispatch({
       type: "SET_ADDRESS",
@@ -203,13 +205,7 @@ const Navbar = () => {
     <div>
       <div className=" flex items-center justify-between text-[#010101] text-base font-medium">
         <Link href="/">
-          <Image
-            src={COFFER}
-            alt="coffer-logo"
-            width={150}
-            height={48}
-            className=" object-contain"
-          />
+          <h2 className="text-black text-3xl uppercase orbitron">Coffer</h2>
         </Link>
         <div
           onClick={() => setOpen(!open)}
@@ -226,10 +222,11 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <li
               key={link.id}
-              className="md:ml-[32px] text-base md:my-0 my-7 mb-[10px]"
+              className="lg:ml-[32px] md:ml-[2px] text-base md:my-0 my-7 mb-[10px]"
             >
               <Link
                 href={link.address}
+                onClick={() => setOpen(false)}
                 className={` border border-transparent ${
                   router.pathname == link.address
                     ? "text-[#010101] border !border-[#010101] rounded-2xl px-[24px] py-[8px]"
@@ -242,18 +239,24 @@ const Navbar = () => {
           ))}
 
           <div className="md:ml-6 md:my-0 my-7 mb-[10px]">
-            {state?.address === null ? (
-              <button
-                onClick={login}
-                className=" bg-[#1321A0] text-[#F5F6FF] rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]"
-              >
-                Login
-              </button>
-            ) : (
+            <ConnectButton />
+            {/* {state?.address === null &&
+              JSON.parse(token)?.idToken === undefined && (
+                <button
+                  onClick={login}
+                  className=" bg-[#1321A0] text-[#F5F6FF] rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]"
+                >
+                  Login
+                </button>
+              )}
+            {(state?.address !== null ||
+              JSON.parse(token)?.idToken !== undefined) && (
               <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-[169px] h-[47px] flex justify-center items-center border-[2px]">
-                {shortenHexWithEllipsis(state?.address, 12)}
+                {state?.address !== null
+                  ? shortenHexWithEllipsis(state?.address, 12)
+                  : JSON.parse(token)?.name}
               </span>
-            )}
+            )} */}
           </div>
         </ul>
       </div>
