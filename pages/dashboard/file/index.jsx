@@ -3,11 +3,13 @@ import Card from './components/Card'
 import Createfolder from "./components/Createfolder"
 import Link from "next/link"
 import { useContractRead, useAccount } from 'wagmi'
-import contractAbi from '../../../utils/cofferabi.json'
+
 import { useEffect } from "react"
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { ethers } from 'ethers';
 import { useState } from "react"
+import { contractAddress } from "@/constants/contract";
+import ABI from "@/constants/ABI/url.json";
 
 
 
@@ -18,19 +20,19 @@ export default function File() {
   // const [photoNumber, setPhotoNumber] = useState('');
   
   const { data : folderArrayData, isError, isLoading, isSuccess } = useContractRead({
-      address: '0xE4C20BED2dd5B397f422ab9133A96318bA9c4f6F',
-      abi: contractAbi,
+      address: contractAddress,
+      abi: ABI,
       functionName: 'getFolders',
       args: [address]
     })
 
   const provider = new ethers.JsonRpcProvider("https://eth-sepolia.g.alchemy.com/v2/5ShvcS43c_Wrsfk_jTMZOU0sXXBKaVXP");
-  const contractAddress = "0xE4C20BED2dd5B397f422ab9133A96318bA9c4f6F";
+  
 
   const getPhotoNumber = async (_name, _address) => {
     const contract = new ethers.Contract(
       contractAddress,
-      contractAbi,
+      ABI,
       provider
     );
       try {
