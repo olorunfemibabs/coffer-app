@@ -6,9 +6,9 @@ const Exist = () => {
   return (
     <div className="md:flex gap-10 justify-start items-start sm:py-16 py-6 sm-px-16 px-6">
       <div className="md:w-[60%] px-5 sm:px-0">
-        <h2 className="flex justify-start text-[#3849DD] gap-2 leading-6 sm:text-2xl text-[32px] font-secondary mb-12 sm:mb-6">
+        <div className="flex justify-start text-[#3849DD] gap-2 leading-6 sm:text-2xl text-[32px] font-secondary mb-12 sm:mb-6">
           Why <span className="text-white font-bold">we</span> exist
-        </h2>
+        </div>
         <div className="text-base side font-normal leading-normal text-white sm:text-black">
           <p className="pb-3 text-justify">
             Capturing Life's Moments: A Storage Photo Decentralised App Made to Preserve Your Memories</p>

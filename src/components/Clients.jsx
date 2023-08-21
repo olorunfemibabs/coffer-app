@@ -2,7 +2,7 @@ import Image from "next/image";
 import { clients } from "../constants";
 
 const Clients = () => (
-  <section className="flex justify-center items-center my-4 bg-[#98a1f9] w-[100%] rounded-tl-3xl rounded-br-3xl">
+  <section className="flex justify-center items-center my-4 border-red-700 bg-[#98a1f9] w-full rounded-tl-3xl rounded-br-3xl">
     <div className="flex justify-center items-center flex-wrap w-full">
       {clients.map(({ id, logo }) => (
         <div

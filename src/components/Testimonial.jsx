@@ -5,7 +5,7 @@ const Testimonial = ({ image, name, username, comment }) => (
     <div className="flex gap-3 items-center text-black grotesk">
       <Image
         src={image}
-        alt="shelf"
+        alt="user_photo"
         className="w-6"
       />
       <div className="grid text-xs font-bold tracking-[0.156px]">
