@@ -18,6 +18,7 @@ import RPC from "@/web3RPC";
 import { WalletConnectV1Adapter } from "@web3auth/wallet-connect-v1-adapter";
 import { shortenHexWithEllipsis } from "../utils";
 import { GlobalContext } from "@/context/GlobalContext";
+import { useAccount } from "wagmi";
 
 const clientId =
   "BKNEy2rC0a4ddc2vLcG9V-yP6Oq4BH4xliD6sMyR0I21qoyAp5fUT2_nFSYJyTjvpnxyb1YM8CgCEWIh4Be7Hr4";
@@ -33,7 +34,8 @@ const Navbar = () => {
   const [balance, setBalance] = useState("");
   const [chainId, setChainId] = useState("");
   const [userData, setUserData] = useState({});
-
+  const {address: acc} = useAccount();
+  
   // useEffect(() => {
   //   const init = async () => {
   //     try {
@@ -224,6 +226,12 @@ const Navbar = () => {
   };
 
   let [open, setOpen] = useState(false);
+
+  useEffect(()=>{
+    if(acc){
+      router.push('/dashboard/home');
+    }
+  },[acc])
 
   return (
     <div>
