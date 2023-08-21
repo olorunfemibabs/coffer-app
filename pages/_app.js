@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { mainnet, polygon, optimism, arbitrum, zora, sepolia } from "wagmi/chains";
+import { mainnet, polygon, optimism, arbitrum, zora, sepolia, lineaTestnet } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import GlobalProvider from "@/context/GlobalContext";
@@ -18,7 +18,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
 
 const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, zora, sepolia],
+  [mainnet, polygon, optimism, arbitrum, zora, sepolia, lineaTestnet],
   [alchemyProvider({ apiKey: '5ShvcS43c_Wrsfk_jTMZOU0sXXBKaVXP' }), publicProvider()]
 );
 const { connectors } = getDefaultWallets({
