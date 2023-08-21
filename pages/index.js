@@ -9,14 +9,25 @@ import Navbar from "@/src/components/Navbar";
 import Objective from "@/src/components/Objective";
 import PricingPlans from "@/src/components/PricingPlans";
 import Testimonials from "@/src/components/Testimonials";
+import Image from "next/image";
+import { Ellipse_1 } from "@/public/assets";
 
 export default function Home() {
   return (
-    <main className=" w-screen h-screen overflow-x-hidden bg-[#F5F6FF]">
+    <main className=" h-screen bg-[#F5F6FF]">
       <div className=" sm:px-16 px-6 py-6 flex justify-center items-center">
         <div className="xl:max-w-[1280px] w-full">
           <Navbar />
         </div>
+      </div>
+      <div className=" md:flex just justify-end items-center hidden">
+        <Image
+          src={Ellipse_1}
+          alt="ellipse"
+          width={20}
+          height={20}
+          className=" mr-80"
+        />
       </div>
 
       <div className="flex justify-center bg-[#F5F6FF] items-start sm:px-16 px-6 py-6">
@@ -25,7 +36,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" bg-[#F5F6FF] flex justify-center items-start w-screen">
+      <div className=" bg-[#F5F6FF] flex justify-center items-start w-full">
         <Clients />
       </div>
 

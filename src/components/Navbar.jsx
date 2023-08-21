@@ -237,7 +237,8 @@ const Navbar = () => {
           ))}
 
           <div className="md:ml-6 md:my-0 my-7 mb-[10px]">
-            {state?.address === null &&
+            <ConnectButton />
+            {/* {state?.address === null &&
               JSON.parse(state?.token)?.idToken === undefined && (
                 <button
                   onClick={login}
@@ -253,7 +254,7 @@ const Navbar = () => {
                   ? shortenHexWithEllipsis(state?.address, 12)
                   : JSON.parse(state?.token)?.name}
               </p>
-            )}
+            )} */}
           </div>
         </ul>
       </div>

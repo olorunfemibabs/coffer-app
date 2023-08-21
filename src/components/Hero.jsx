@@ -8,6 +8,8 @@ import { CHAIN_NAMESPACES } from "@web3auth/base";
 import { MetamaskAdapter } from "@web3auth/metamask-adapter";
 import { WalletConnectV1Adapter } from "@web3auth/wallet-connect-v1-adapter";
 import { ColorRing } from "react-loader-spinner";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { Star_1 } from "@/public/assets";
 
 const Hero = () => {
   const [web3auth, setWeb3auth] = useState(null);
@@ -99,9 +101,9 @@ const Hero = () => {
   };
   return (
     <section className="flex md:flex-row flex-col sm:py-16 py-6 sm-px-16 px- side gap-16 bg-[#F5F6FF] z-20">
-      <div className="flex-2 flex justify-center items-start flex-col xl:px-0 sm:px-6 px-6">
+      <div className=" w-4/5 flex justify-center items-start flex-col xl:px-0 sm:px-6 px-6">
         <div className="flex flex-row justify-between items-center w-full">
-          <h1 className="flex-1 font-normal sm:text-[64px] text-[44px] text-[rgb(1,1,1)] sm:leading-[100.8px] leading-[75px] side">
+          <h1 className="flex-1 font-normal sm:text-[57px] text-[44px] text-[rgb(1,1,1)] sm:leading-[100.8px] leading-[75px] side">
             Unleash Your Memories: <br className="sm:block hidden" />{" "}
             <p>
               Easy <span className="text-[#1b2ab8]">Photo Storage</span>
@@ -118,7 +120,8 @@ const Hero = () => {
           and accessibility.
         </p>
         <div className="mt-8">
-          {state?.address === null &&
+          <ConnectButton />
+          {/* {state?.address === null &&
             JSON.parse(state?.token)?.idToken === undefined && (
               <button
                 onClick={login}
@@ -143,21 +146,31 @@ const Hero = () => {
                   />
                 )}
               </button>
-            )}
-          {(state?.address !== null ||
+            )} */}
+          {/* {(state?.address !== null ||
             JSON.parse(state?.token)?.idToken !== undefined) && (
             <span className="bg-[#1321A0] text-[#F5F6FF] hover:cursor-default rounded-[20px] py-[12px] px-[24px] w-fit h-[47px] flex justify-center items-center border-[2px]">
               Account Connected
             </span>
-          )}
+          )} */}
+        </div>
+
+        <div className=" md:flex just justify-start items-center hidden mt-10">
+          <Image
+            src={Star_1}
+            alt="ellipse"
+            width={20}
+            height={20}
+            className=" ml-36"
+          />
         </div>
       </div>
 
-      <div className="flex-1 md:flex items-center justify-center hidden xl:block md:my-0 my-10 relative ">
+      <div className=" w-[570] md:flex items-center justify-center hidden xl:block md:my-0 my-10 relative ">
         <Image
           src={Hero_Image}
           alt="hero-image"
-          width={600}
+          width={570}
           height={640}
           className=" object-contain"
         />
